@@ -1,22 +1,20 @@
 <script>
-import axios from "axios";
-import AppCard from "./components/AppCard.vue";
-
 export default {
   components: {
-    AppCard,
+    // AppList,
   },
 
-  created() {
-    axios.get("http://localhost:8000/api/apartments").then((response) => {
-      console.log(response.data.data);
-    });
-  },
+  // created() {
+  //   axios.get("http://localhost:8000/api/apartments").then((response) => {
+  //     console.log(response.data.data);
+  //   });
+  // },
 };
 </script>
 
 <template>
-  <AppCard />
+  <!-- <AppList /> -->
+  <router-view></router-view>
 </template>
 
-<style scoped></style>
+<style lang="scss"></style>
