@@ -1,8 +1,18 @@
-<script></script>
+<script>
+import AppList from "../components/apartments/AppList.vue";
+
+export default {
+  data() {
+    return {};
+  },
+  components: { AppList },
+};
+</script>
 
 <template>
   <div class="container">
     <h1>Homepage</h1>
+    <AppList></AppList>
   </div>
 </template>
 

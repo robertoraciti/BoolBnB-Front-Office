@@ -1,11 +1,13 @@
 <script>
 import AppCard from "./AppCard.vue";
 import axios from "axios";
+import { store } from "../../data/store";
 
 export default {
   data() {
     return {
       apartments: [],
+      endpoint: store.api.baseUrl + "apartments",
       pagination: {
         links: null,
       },
@@ -16,7 +18,7 @@ export default {
   components: { AppCard },
   methods: {
     fetchProjects(uri = this.endpoint) {
-      // console.log(uri);
+      console.log(uri);
       axios.get(uri).then((response) => {
         this.apartments = response.data.data;
         // this.pagination.links = response.data.links;
@@ -24,11 +26,11 @@ export default {
     },
   },
   computed: {
-    endpoint() {
-      //   return this.type_id
-      // ? store.api.baseUrl + "portfolio-by-type/" + this.type_id
-      // : store.api.baseUrl + "apartments";
-    },
+    // endpoint() {
+    //   return store.api.baseUrl + "apartments";
+    // ? store.api.baseUrl + "portfolio-by-type/" + this.type_id
+    // : store.api.baseUrl + "apartments";
+    // },
   },
   created() {
     this.fetchProjects();
