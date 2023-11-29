@@ -1,10 +1,10 @@
 <script>
 import axios from "axios";
-import AppCard from "./components/AppCard.vue";
+import AppList from "./components/AppList.vue";
 
 export default {
   components: {
-    AppCard,
+    AppList,
   },
 
   created() {
@@ -16,7 +16,7 @@ export default {
 </script>
 
 <template>
-  <AppCard />
+  <AppList />
 </template>
 
 <style scoped></style>
