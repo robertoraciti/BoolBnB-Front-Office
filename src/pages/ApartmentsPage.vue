@@ -2,7 +2,7 @@
 
 <template>
   <div class="container">
-    <h1>Homepage</h1>
+    <h1>Apartments</h1>
   </div>
 </template>
 
