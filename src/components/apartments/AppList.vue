@@ -21,7 +21,7 @@ export default {
       console.log(uri);
       axios.get(uri).then((response) => {
         this.apartments = response.data.data;
-        // this.pagination.links = response.data.links;
+        this.pagination.links = response.data.links;
       });
     },
   },
@@ -40,9 +40,37 @@ export default {
 <template>
   <div class="container">
     <h2>AppList</h2>
+    <div class="container">
+      <nav aria-label="Page navigation example">
+        <ul class="pagination">
+          <li
+            v-for="link in pagination.links"
+            @click="fetchProjects(link.url)"
+            class="page-item"
+            :class="link.active ? 'active' : ''"
+          >
+            <a class="page-link" v-html="link.label"></a>
+          </li>
+        </ul>
+      </nav>
+    </div>
     <div class="row row-cols-3 g-4">
       <AppCard v-for="apartment in apartments" :apartment="apartment" />
     </div>
+  </div>
+  <div class="container">
+    <nav aria-label="Page navigation example">
+      <ul class="pagination">
+        <li
+          v-for="link in pagination.links"
+          @click="fetchProjects(link.url)"
+          class="page-item"
+          :class="link.active ? 'active' : ''"
+        >
+          <a class="page-link" v-html="link.label"></a>
+        </li>
+      </ul>
+    </nav>
   </div>
 </template>
 <style lang="scss" scoped></style>
