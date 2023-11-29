@@ -25,6 +25,7 @@ export default {
       });
     },
   },
+  // TODO in case of filter
   computed: {
     // endpoint() {
     //   return store.api.baseUrl + "apartments";
