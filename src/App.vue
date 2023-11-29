@@ -1,19 +1,14 @@
 <script>
+import NavbarUi from "./components/ui/NavbarUi.vue";
 export default {
   components: {
-    // AppList,
+    NavbarUi,
   },
-
-  // created() {
-  //   axios.get("http://localhost:8000/api/apartments").then((response) => {
-  //     console.log(response.data.data);
-  //   });
-  // },
 };
 </script>
 
 <template>
-  <!-- <AppList /> -->
+  <NavbarUi />
   <router-view></router-view>
 </template>
 
