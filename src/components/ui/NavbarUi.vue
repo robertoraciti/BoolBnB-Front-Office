@@ -17,7 +17,8 @@ export default {
         data-bs-target="#navbarNav"
         aria-controls="navbarNav"
         aria-expanded="false"
-        aria-label="Toggle navigation">
+        aria-label="Toggle navigation"
+      >
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
@@ -30,14 +31,14 @@ export default {
               >Home</router-link
             >
           </li>
-          <!-- <li class="nav-item">
+          <li class="nav-item">
             <router-link
               class="nav-link"
               aria-current="page"
               :to="{ name: 'apartments' }"
               >Apartments</router-link
             >
-          </li> -->
+          </li>
         </ul>
       </div>
     </div>

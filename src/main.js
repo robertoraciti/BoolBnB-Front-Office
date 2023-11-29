@@ -3,7 +3,7 @@ import "./assets/scss/style.scss";
 import * as bootstrap from "bootstrap";
 import axios from "axios";
 
-// import { router } from "./router";
+import { router } from "./router";
 
 import App from "./App.vue";
 
@@ -20,6 +20,6 @@ import { faUserSecret } from "@fortawesome/free-solid-svg-icons";
 library.add(faUserSecret);
 
 const app = createApp(App);
-// app.use(router);
+app.use(router);
 app.component("font-awesome-icon", FontAwesomeIcon);
 app.mount("#app");
