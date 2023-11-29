@@ -9,18 +9,18 @@ const router = createRouter({
   history: createWebHistory(),
   routes: [
     {
-      path: "/",
       name: "home",
+      path: "/",
       component: HomePage,
     },
     {
+      name: "apartments",
       path: "/apartments",
-      name: "apartment",
-      component: Apartment,
+      component: Apartments,
     },
     {
-      path: "/apartment/:id",
       name: "apartment",
+      path: "/apartment/:id",
       component: ApartmentDetail,
     },
     // {
