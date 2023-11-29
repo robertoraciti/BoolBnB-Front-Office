@@ -5,16 +5,33 @@ import axios from "axios";
 export default {
   data() {
     return {
-      title: "Hello guest",
+      apartments: [],
+      /* pagination: {
+        links: null,
+      },
+      // uri: store.api.baseUrl + "projects",*/
     };
   },
-
-  props: {
-    apartments: Array,
+  props: { type_id: Number },
+  components: { AppCard },
+  methods: {
+    fetchProjects(uri = this.endpoint) {
+      // console.log(uri);
+      axios.get(uri).then((response) => {
+        this.apartments = response.data.data;
+        // this.pagination.links = response.data.links;
+      });
+    },
   },
-
-  components: {
-    AppCard,
+  computed: {
+    endpoint() {
+      return this.type_id
+        ? store.api.baseUrl + "portfolio-by-type/" + this.type_id
+        : store.api.baseUrl + "projects";
+    },
+  },
+  created() {
+    this.fetchProjects();
   },
 };
 </script>
