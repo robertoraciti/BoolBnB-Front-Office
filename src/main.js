@@ -1,6 +1,7 @@
 import { createApp } from "vue";
 import "./assets/scss/style.scss";
 import * as bootstrap from "bootstrap";
+import axios from "axios";
 
 // import { router } from "./router";
 
