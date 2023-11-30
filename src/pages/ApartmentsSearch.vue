@@ -63,7 +63,6 @@ export default {
         id="address"
         class="mt-2"
         v-model="addressToSearch"
-        @keyup.enter="geocoding()"
       />
       <br />
       <label for="rooms">rooms</label>
@@ -79,6 +78,21 @@ export default {
       <input type="number" name="beds" id="beds" min="1" v-model="beds" />
     </div>
 
+    <label for="radius" class="form-label">Radius</label>
+    <input
+      type="range"
+      class="form-range"
+      id="radius"
+      min="20000"
+      max="100000"
+      step="1000"
+      v-model="radius"
+      @click.left="geocoding()"
+    />
+    <span>{{ parseInt(radius / 1000) }} km</span>
+
+    <button class="btn btn-primary" @click="geocoding()">Search</button>
+
     <div class="container mt-5">
       <h2>Risultati:</h2>
       <p v-for="(apartment, index) in apartmentsList">{{ apartment.name }}</p>
@@ -93,6 +107,8 @@ export default {
   border-radius: 10px;
   height: 500px;
   display: flex;
+  justify-content: center;
+  align-items: center;
 
   background-color: lightgrey;
 }
