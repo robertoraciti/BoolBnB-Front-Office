@@ -90,12 +90,12 @@ export default {
       </div>
       <div class="col-9">
         <div class="row row-cols-2 g-3">
-          <AppCard
+          <!-- <AppCard
             v-for="apartment in filteredApartments"
             :key="apartment.id"
-            :post="apartment"
+            :apartment="apartment"
             :isDetail="false"
-          />
+          /> -->
         </div>
       </div>
     </div>
