@@ -42,6 +42,7 @@ export default {
         )
         .then((response) => {
           this.filteredApartments = response.data.data;
+          console.log(this.filteredApartments);
         });
     },
 
@@ -53,7 +54,6 @@ export default {
             active: false,
           };
         });
-        console.log(this.services);
       });
     },
 
