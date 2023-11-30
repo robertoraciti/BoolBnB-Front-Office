@@ -9,7 +9,7 @@ export default {
       apiKey: "k9U6D8g43D9rsDAaXC4vgkIc4Ko56P7d",
       lng: "",
       lat: "",
-      radius: "20000",
+      radius: "20",
       rooms: 1,
       beds: 1,
       apartmentsList: [],
@@ -54,7 +54,7 @@ export default {
 <template>
   <div class="wrapper my-5">
     <div class="container mt-5">
-      <h2>Ricerca:</h2>
+      <h2>Search:</h2>
       <br />
       <label for="address">Address</label>
       <input
@@ -83,18 +83,18 @@ export default {
       type="range"
       class="form-range"
       id="radius"
-      min="20000"
-      max="100000"
-      step="1000"
+      min="20"
+      max="100"
+      step="10"
       v-model="radius"
       @click.left="geocoding()"
     />
-    <span>{{ parseInt(radius / 1000) }} km</span>
+    <span>{{ this.radius }} km</span>
 
     <button class="btn btn-primary" @click="geocoding()">Search</button>
 
     <div class="container mt-5">
-      <h2>Risultati:</h2>
+      <h2>Results:</h2>
       <p v-for="(apartment, index) in apartmentsList">{{ apartment.name }}</p>
     </div>
   </div>
