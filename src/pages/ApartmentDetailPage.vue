@@ -8,7 +8,7 @@
         <h4>{{ apartment.name }}</h4>
         <p>{{ apartment.description }}</p>
         <p class="mt-auto">
-          <strong>{{ apartment.price }} € </strong> a Notte
+          <strong>{{ apartment.price }} € </strong> Night
         </p>
       </div>
     </div>

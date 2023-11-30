@@ -1,20 +1,17 @@
 <script>
 import axios from "axios";
-import AppCard from "./AppCard.vue";
 import { store } from "../../data/store";
-import ApartmentDetail from "../../pages/ApartmentDetailPage.vue";
-import { RouterLink } from "vue-router";
 
 export default {
   data() {
     return {
       title: "Apartment Card",
+      name: "App",
     };
   },
   props: {
     apartment: Object,
   },
-  components: { ApartmentDetail, RouterLink },
 };
 </script>
 
@@ -26,14 +23,25 @@ export default {
         <h4>{{ apartment.name }}</h4>
         <p>{{ apartment.description }}</p>
         <p class="mt-auto">
-          <strong>{{ apartment.price }} € </strong> a Notte
+          <strong>{{ apartment.price }} € </strong> Night
         </p>
       </div>
-      <!-- <RouterLink
+      <div class="container">
+        <div v-for="service in apartment.services">
+          <font-awesome-icon icon="fa-solid fa-mug-hot" />
+          {{ service.icon }}
+        </div>
+      </div>
+      <RouterLink
         class="d-flex justify-content-center align-self-center btn btn-primary px-3 my-2"
-        :to="{ name: 'apartment' }"
-        >Dettagli
-      </RouterLink> -->
+        :to="{
+          name: 'apartment',
+          params: {
+            id: apartment.id,
+          },
+        }"
+        >Details
+      </RouterLink>
     </div>
   </div>
 </template>
