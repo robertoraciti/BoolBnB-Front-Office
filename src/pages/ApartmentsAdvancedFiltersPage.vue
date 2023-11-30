@@ -21,7 +21,7 @@ export default {
       });
 
       return {
-        activeTags,
+        activeServices,
       };
     },
   },
@@ -29,7 +29,7 @@ export default {
   components: { AppCard },
 
   methods: {
-    fetchPosts() {
+    fetchApartments() {
       axios
         .post(
           store.api.baseUrl + "get-apartments-by-filters",
@@ -53,6 +53,7 @@ export default {
             active: false,
           };
         });
+        console.log(this.services);
       });
     },
 
@@ -83,7 +84,7 @@ export default {
             disabled: !service.active,
           }"
           @click="toggleService(service)"
-          class="badge mx-1 clickable"
+          class="badge mx-1 clickable service"
         >
           {{ service.name }}
         </span>
@@ -103,11 +104,15 @@ export default {
 </template>
 
 <style lang="scss" scoped>
-// .disabled {
-//   background-color: #555 !important;
-// }
+.disabled {
+  background-color: #555 !important;
+}
 
-// .clickable {
-//   cursor: pointer;
-// }
+.clickable {
+  cursor: pointer;
+}
+
+.service {
+  background-color: rgb(114, 114, 189);
+}
 </style>

@@ -3,7 +3,7 @@ import { createRouter, createWebHistory } from "vue-router";
 import HomePage from "../pages/HomePage.vue";
 import Apartments from "../pages/ApartmentsPage.vue";
 import ApartmentDetail from "../pages/ApartmentDetailPage.vue";
-import ApartmentsAdvancedFilters from "../pages/ApartmentsAdvancedFiltersPage.vue";
+import AdvancedFilters from "../pages/ApartmentsAdvancedFiltersPage.vue";
 // import PortfolioByType from "../pages/PortfolioByTypePage.vue";
 
 const router = createRouter({
@@ -27,7 +27,7 @@ const router = createRouter({
     {
       name: "advanced-filter",
       path: "/advanced-filter",
-      component: ApartmentsAdvancedFilters,
+      component: AdvancedFilters,
     },
     // {
     //   path: "/project/type/:type_id",

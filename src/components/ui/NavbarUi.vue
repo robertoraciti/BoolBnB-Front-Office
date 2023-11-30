@@ -39,6 +39,14 @@ export default {
               >Apartments</router-link
             >
           </li>
+          <li class="nav-item">
+            <router-link
+              class="nav-link"
+              aria-current="page"
+              :to="{ name: 'advanced-filter' }"
+              >Advanced filter</router-link
+            >
+          </li>
         </ul>
       </div>
     </div>
