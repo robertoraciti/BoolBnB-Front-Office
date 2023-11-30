@@ -14,10 +14,34 @@ import { library } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 
 / import specific icons /;
-import { faUserSecret } from "@fortawesome/free-solid-svg-icons";
+import { faUmbrellaBeach } from "@fortawesome/free-solid-svg-icons";
+import { faTv } from "@fortawesome/free-solid-svg-icons";
+import { faWifi } from "@fortawesome/free-solid-svg-icons";
+import { faCarSide } from "@fortawesome/free-solid-svg-icons";
+import { faTree } from "@fortawesome/free-solid-svg-icons";
+import { faKitMedical } from "@fortawesome/free-solid-svg-icons";
+import { faPaw } from "@fortawesome/free-solid-svg-icons";
+import { faKitchenSet } from "@fortawesome/free-solid-svg-icons";
+import { faFireExtinguisher } from "@fortawesome/free-solid-svg-icons";
+import { faFan } from "@fortawesome/free-solid-svg-icons";
+import { faSoap } from "@fortawesome/free-solid-svg-icons";
+import { faMugHot } from "@fortawesome/free-solid-svg-icons";
 
 / add icons to the library */;
-library.add(faUserSecret);
+library.add(
+  faUmbrellaBeach,
+  faTv,
+  faWifi,
+  faCarSide,
+  faTree,
+  faKitMedical,
+  faPaw,
+  faKitchenSet,
+  faFireExtinguisher,
+  faFan,
+  faSoap,
+  faMugHot
+);
 
 const app = createApp(App);
 app.use(router);

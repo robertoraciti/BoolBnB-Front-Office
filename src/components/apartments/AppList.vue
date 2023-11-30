@@ -40,28 +40,25 @@ export default {
 </script>
 <template>
   <div class="container">
-    <h2>AppList</h2>
-    <div class="container">
-      <nav aria-label="Page navigation example">
-        <ul class="pagination">
-          <li
-            v-for="link in pagination.links"
-            @click="fetchProjects(link.url)"
-            class="page-item"
-            :class="link.active ? 'active' : ''"
-          >
-            <a class="page-link" v-html="link.label"></a>
-          </li>
-        </ul>
-      </nav>
-    </div>
-    <div class="row row-cols-3 g-4">
-      <AppCard v-for="apartment in apartments" :apartment="apartment" />
-    </div>
+    <nav aria-label="Page navigation example">
+      <ul class="pagination d-flex justify-content-center">
+        <li
+          v-for="link in pagination.links"
+          @click="fetchProjects(link.url)"
+          class="page-item"
+          :class="link.active ? 'active' : ''"
+        >
+          <a class="page-link" v-html="link.label"></a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+  <div class="row row-cols-3 g-4">
+    <AppCard v-for="apartment in apartments" :apartment="apartment" />
   </div>
   <div class="container">
     <nav aria-label="Page navigation example">
-      <ul class="pagination">
+      <ul class="pagination d-flex justify-content-center mt-5">
         <li
           v-for="link in pagination.links"
           @click="fetchProjects(link.url)"
@@ -74,4 +71,8 @@ export default {
     </nav>
   </div>
 </template>
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.pagination:hover {
+  cursor: pointer;
+}
+</style>
