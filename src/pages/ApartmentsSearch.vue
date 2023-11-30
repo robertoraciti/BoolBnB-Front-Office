@@ -18,43 +18,37 @@ export default {
   },
 
   methods: {
-    // geocoding() {
-    //   tt.services
-    //     .geocode({
-    //       key: this.apiKey,
-    //       query: this.addressToSearch,
-    //       bestResult: true,
-    //     })
-    //     .then((res) => {
-    //       console.log(res);
-    //       this.lng = res.position.lng;
-    //       this.lat = res.position.lat;
-    //     });
-    // },
-    // // Chimata axios filter apartments
-    // getApartmentList() {
-    //   axios
-    //     .get(
-    //       `http://127.0.0.1:8000/api/search/${this.lat}/${this.lng}/${this.radius}/${this.rooms}/${this.beds}`
-    //     )
-    //     .then((res) => {
-    //       this.apartmentsList = res.data;
-    //     });
-    // },
-    // getApartmentList() {
-    //   axios
-    //     .get(`http://127.0.0.1:8000/api/search/${this.addressToSearch}`)
-    //     .then((res) => {
-    //       console.log(res.data);
-    //       this.apartmentsList = res.data;
-    //     });
-    // },
+    geocoding() {
+      tt.services
+        .geocode({
+          key: this.apiKey,
+          query: this.addressToSearch,
+          bestResult: true,
+        })
+        .then((res) => {
+          console.log(res);
+          this.lng = res.position.lng;
+          this.lat = res.position.lat;
+
+          this.getApartmentList();
+        });
+    },
+    // Chimata axios filter apartments
+    getApartmentList() {
+      axios
+        .get(
+          `http://127.0.0.1:8000/api/search/${this.lat}/${this.lng}/${this.radius}/${this.rooms}/${this.beds}`
+        )
+        .then((res) => {
+          this.apartmentsList = res.data;
+        });
+    },
   },
 
-  // created() {
-  //   this.geocoding();
-  //   this.getApartmentList();
-  // },
+  created() {
+    this.geocoding();
+    this.getApartmentList();
+  },
 };
 </script>
 <template>
@@ -62,16 +56,26 @@ export default {
     <div class="container mt-5">
       <h2>Ricerca:</h2>
       <br />
+      <label for="address">Address</label>
       <input
         type="text"
-        name="search"
-        id="search"
+        name="address"
+        id="address"
         class="mt-2"
         v-model="addressToSearch"
-        @keyup.enter="getApartmentList()"
+        @keyup.enter="geocoding()"
       />
+      <br />
+      <label for="rooms">rooms</label>
+      <input
+        type="number"
+        name="rooms"
+        id="rooms"
+        min="1"
+        v-model="rooms"
+      /><br />
 
-      <input type="number" name="rooms" id="rooms" min="1" v-model="rooms" />
+      <label for="beds">beds</label>
       <input type="number" name="beds" id="beds" min="1" v-model="beds" />
     </div>
 
