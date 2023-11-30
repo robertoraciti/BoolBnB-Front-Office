@@ -3,6 +3,7 @@ import { createRouter, createWebHistory } from "vue-router";
 import HomePage from "../pages/HomePage.vue";
 import Apartments from "../pages/ApartmentsPage.vue";
 import ApartmentDetail from "../pages/ApartmentDetailPage.vue";
+import ApartmentsAdvancedFilters from "../pages/ApartmentsAdvancedFiltersPage.vue";
 // import PortfolioByType from "../pages/PortfolioByTypePage.vue";
 
 const router = createRouter({
