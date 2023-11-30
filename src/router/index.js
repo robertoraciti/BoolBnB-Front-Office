@@ -24,6 +24,11 @@ const router = createRouter({
       path: "/apartment/:id",
       component: ApartmentDetail,
     },
+    {
+      name: "advanced-filter",
+      path: "/advanced-filter",
+      component: ApartmentsAdvancedFilters,
+    },
     // {
     //   path: "/project/type/:type_id",
     //   name: "portfolio-by-type",
