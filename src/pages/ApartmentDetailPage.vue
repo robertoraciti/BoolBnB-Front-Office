@@ -39,9 +39,6 @@ export default {
         <h2>{{ apartment.name }}</h2>
         <h5>{{ apartment.address }}</h5>
 
-        <div>
-          <p class="fw-bold mt-5">{{ apartment.price }} € night</p>
-        </div>
         <div class="mt-5">
           <p>{{ apartment.description }}</p>
         </div>
@@ -56,9 +53,12 @@ export default {
         <div class="container mt-5">
           <div class="row row-cols-2">
             <div v-for="service in apartment.services" class="col">
-              <font-awesome-icon icon="fa-solid fa-mug-hot" />
-              {{ service.icon }}
+              <font-awesome-icon :icon="'fa-solid fa-' + service.icon" />
+              {{ service.name }}
             </div>
+          </div>
+          <div>
+            <p class="fw-bold mt-5">{{ apartment.price }} € night</p>
           </div>
         </div>
       </div>
