@@ -30,29 +30,45 @@ export default {
 </script>
 
 <template>
-  <div class="container">
-    <h5 class="my-5">Apartment Detail</h5>
-    <h2>{{ apartment.name }}</h2>
-    <h5>{{ apartment.address }}</h5>
+  <div class="container mt-5">
+    <div class="row">
+      <div class="col-6">
+        <img :src="apartment.cover_image" alt="" />
+      </div>
+      <div class="col-6">
+        <h2>{{ apartment.name }}</h2>
+        <h5>{{ apartment.address }}</h5>
 
-    <div>
-      <p class="fw-bold mt-5">{{ apartment.price }} € night</p>
-    </div>
-    <div class="mt-5">
-      <img :src="apartment.cover_image" alt="" class="h-50 w-100" />
-    </div>
-    <div class="mt-5">
-      <p>{{ apartment.description }}</p>
-    </div>
-    <div class="text-center mt-5">
-      <div class="row">
-        <div class="col">{{ apartment.rooms }} Rooms</div>
-        <div class="col">{{ apartment.beds }} Beds</div>
-        <div class="col">{{ apartment.bathrooms }} Bathrooms</div>
-        <div class="col">{{ apartment.mq }} Mq</div>
+        <div>
+          <p class="fw-bold mt-5">{{ apartment.price }} € night</p>
+        </div>
+        <div class="mt-5">
+          <p>{{ apartment.description }}</p>
+        </div>
+        <div class="text-center mt-5">
+          <div class="row">
+            <div class="col">{{ apartment.rooms }} Rooms</div>
+            <div class="col">{{ apartment.beds }} Beds</div>
+            <div class="col">{{ apartment.bathrooms }} Bathrooms</div>
+            <div class="col">{{ apartment.mq }} Mq</div>
+          </div>
+        </div>
+        <div class="container mt-5">
+          <div class="row row-cols-2">
+            <div v-for="service in apartment.services" class="col">
+              <font-awesome-icon icon="fa-solid fa-mug-hot" />
+              {{ service.icon }}
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </template>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+img {
+  object-fit: cover;
+  width: 100%;
+}
+</style>
