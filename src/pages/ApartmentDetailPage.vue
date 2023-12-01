@@ -31,7 +31,7 @@ export default {
 
 <template>
   <RouterLink
-    class="btn btn-danger ms-5 mt-3"
+    class="btn btn-primary ms-5 mt-3"
     :to="{
       name: 'home',
     }"
@@ -42,7 +42,7 @@ export default {
       <div class="col-5">
         <img :src="apartment.cover_image" alt="" />
       </div>
-      <div class="col-5 border no-p border-danger">
+      <div class="col-5 border no-p border-primary">
         <div class="main-info">
           <h2>{{ apartment.name }}</h2>
           <h5>{{ apartment.address }}</h5>
@@ -81,7 +81,7 @@ export default {
 }
 .main-info {
   color: white;
-  background-color: red;
+  background-color: royalblue;
 }
 
 img {
