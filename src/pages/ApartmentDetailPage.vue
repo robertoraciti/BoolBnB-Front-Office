@@ -30,16 +30,25 @@ export default {
 </script>
 
 <template>
-  <div class="container mt-5">
+  <RouterLink
+    class="btn btn-danger ms-5 mt-3"
+    :to="{
+      name: 'home',
+    }"
+    >Go Back</RouterLink
+  >
+  <div class="container mt-5 d-flex justify-content-around">
     <div class="row">
-      <div class="col-6">
+      <div class="col-5">
         <img :src="apartment.cover_image" alt="" />
       </div>
-      <div class="col-6">
-        <h2>{{ apartment.name }}</h2>
-        <h5>{{ apartment.address }}</h5>
+      <div class="col-5 border no-p border-danger">
+        <div class="main-info">
+          <h2>{{ apartment.name }}</h2>
+          <h5>{{ apartment.address }}</h5>
+        </div>
 
-        <div class="mt-5">
+        <div class="mt-5 p-2">
           <p>{{ apartment.description }}</p>
         </div>
         <div class="text-center mt-5">
@@ -67,6 +76,14 @@ export default {
 </template>
 
 <style lang="scss" scoped>
+.no-p {
+  padding: 0;
+}
+.main-info {
+  color: white;
+  background-color: red;
+}
+
 img {
   object-fit: cover;
   width: 100%;
