@@ -26,12 +26,6 @@ export default {
           <strong>{{ apartment.price }} € </strong> Night
         </p>
       </div>
-      <div class="container">
-        <div v-for="service in apartment.services">
-          <font-awesome-icon icon="fa-solid fa-mug-hot" />
-          {{ service.icon }}
-        </div>
-      </div>
       <RouterLink
         class="d-flex justify-content-center align-self-center btn btn-primary px-3 my-2"
         :to="{
