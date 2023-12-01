@@ -87,7 +87,7 @@ export default {
       <h2>Ricerca:</h2>
       <br />
       <div id="address_search"></div>
-      <input type="text" class="form-control" id="address" name="address" />
+      <input type="hidden" class="form-control" id="address" name="address" />
       <button class="btn btn-primary mt-3" @click="geocoding()">Search</button>
     </div>
 
