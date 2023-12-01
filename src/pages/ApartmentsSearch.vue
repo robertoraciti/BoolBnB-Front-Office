@@ -1,11 +1,11 @@
 <script>
-import tt from "@tomtom-international/web-sdk-services";
+import { services } from "@tomtom-international/web-sdk-services";
+import SearchBox from "@tomtom-international/web-sdk-plugin-searchbox";
 import axios from "axios";
 
 export default {
   data() {
     return {
-      addressToSearch: "",
       apiKey: "k9U6D8g43D9rsDAaXC4vgkIc4Ko56P7d",
       lng: "",
       lat: "",
@@ -19,10 +19,11 @@ export default {
 
   methods: {
     geocoding() {
-      tt.services
+      let getAddress = document.getElementById("address").value;
+      services
         .geocode({
           key: this.apiKey,
-          query: this.addressToSearch,
+          query: getAddress,
           bestResult: true,
         })
         .then((res) => {
@@ -43,31 +44,59 @@ export default {
           this.apartmentsList = res.data;
         });
     },
+
+    autocompleteAddress() {
+      var options = {
+        searchOptions: {
+          key: "k9U6D8g43D9rsDAaXC4vgkIc4Ko56P7d",
+          language: "en-EN",
+          limit: 5,
+        },
+        autocompleteOptions: {
+          key: "k9U6D8g43D9rsDAaXC4vgkIc4Ko56P7d",
+          language: "it-IT",
+        },
+      };
+      var ttSearchBox = new SearchBox(services, options);
+      var searchBoxHTML = ttSearchBox.getSearchBoxHTML();
+      let address_search = document.getElementById("address_search");
+      address_search.append(searchBoxHTML);
+
+      ttSearchBox.on("tomtom.searchbox.resultselected", function (data) {
+        console.log(data.data.result.address.freeformAddress);
+        let choiceAddress = document.getElementById("address");
+        choiceAddress.value = data.data.result.address.freeformAddress;
+      });
+    },
   },
 
-  created() {
+  mounted() {
+    this.autocompleteAddress();
     this.geocoding();
-    this.getApartmentList();
   },
 };
 </script>
 <template>
+  <!-- <link
+    rel="stylesheet"
+    type="text/css"
+    href="https://api.tomtom.com/maps-sdk-for-web/cdn/plugins/SearchBox/3.1.12/SearchBox.css"
+  /> -->
+  <link
+    rel="stylesheet"
+    href="../../node_modules/@tomtom-international/web-sdk-plugin-searchbox/dist/SearchBox.css"
+  />
   <div class="wrapper my-5">
     <div class="container mt-5">
-      <h2>Search:</h2>
-      <br />
-      <label for="address">Address</label>
-      <input
-        type="text"
-        name="address"
-        id="address"
-        class="mt-2"
-        v-model="addressToSearch"
-      />
+      <h2 class="text-center">Search:</h2>
+      <label for="address" class="form-label">Address</label>
+      <div id="address_search"></div>
+      <input type="hidden" class="form-control" id="address" name="address" />
       <br />
       <label for="rooms">rooms</label>
       <input
         type="number"
+        class="form-control"
         name="rooms"
         id="rooms"
         min="1"
@@ -75,28 +104,32 @@ export default {
       /><br />
 
       <label for="beds">beds</label>
-      <input type="number" name="beds" id="beds" min="1" v-model="beds" />
+      <input
+        type="number"
+        class="form-control"
+        name="beds"
+        id="beds"
+        min="1"
+        v-model="beds"
+      />
+
+      <label for="radius" class="form-label">Radius</label>
+      <input
+        type="range"
+        class="form-range"
+        id="radius"
+        min="20"
+        max="100"
+        step="10"
+        v-model="radius"
+        @click.left="geocoding()"
+      />
+      <span>{{ this.radius }} km</span> <br />
+      <button class="btn btn-primary mt-3" @click="geocoding()">Search</button>
     </div>
 
-    <label for="radius" class="form-label">Radius</label>
-    <input
-      type="range"
-      class="form-range"
-      id="radius"
-      min="20"
-      max="100"
-      step="10"
-      v-model="radius"
-      @click.left="geocoding()"
-    />
-    <span>{{ this.radius }} km</span>
-
-    <button class="btn btn-primary" @click="geocoding()">Search</button>
-
-    <div class="container mt-5">
-      <h2>Results:</h2>
-      <p v-for="(apartment, index) in apartmentsList">{{ apartment.name }}</p>
-    </div>
+    <h2>Results:</h2>
+    <p v-for="(apartment, index) in apartmentsList">{{ apartment.name }}</p>
   </div>
 </template>
 
@@ -106,9 +139,10 @@ export default {
   margin: auto;
   border-radius: 10px;
   height: 500px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  // display: flex;
+  // flex-direction: column;
+  // justify-content: center;
+  // align-items: center;
 
   background-color: lightgrey;
 }
