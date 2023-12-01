@@ -30,29 +30,62 @@ export default {
 </script>
 
 <template>
-  <div class="container">
-    <h5 class="my-5">Apartment Detail</h5>
-    <h2>{{ apartment.name }}</h2>
-    <h5>{{ apartment.address }}</h5>
+  <RouterLink
+    class="btn btn-primary ms-5 mt-3"
+    :to="{
+      name: 'home',
+    }"
+    >Go Back</RouterLink
+  >
+  <div class="container mt-5 d-flex justify-content-around">
+    <div class="row">
+      <div class="col-5">
+        <img :src="apartment.cover_image" alt="" />
+      </div>
+      <div class="col-5 border no-p border-primary">
+        <div class="main-info">
+          <h2>{{ apartment.name }}</h2>
+          <h5>{{ apartment.address }}</h5>
+        </div>
 
-    <div>
-      <p class="fw-bold mt-5">{{ apartment.price }} € night</p>
-    </div>
-    <div class="mt-5">
-      <img :src="apartment.cover_image" alt="" class="h-50 w-100" />
-    </div>
-    <div class="mt-5">
-      <p>{{ apartment.description }}</p>
-    </div>
-    <div class="text-center mt-5">
-      <div class="row">
-        <div class="col">{{ apartment.rooms }} Rooms</div>
-        <div class="col">{{ apartment.beds }} Beds</div>
-        <div class="col">{{ apartment.bathrooms }} Bathrooms</div>
-        <div class="col">{{ apartment.mq }} Mq</div>
+        <div class="mt-5 p-2">
+          <p>{{ apartment.description }}</p>
+        </div>
+        <div class="text-center mt-5">
+          <div class="row">
+            <div class="col">{{ apartment.rooms }} Rooms</div>
+            <div class="col">{{ apartment.beds }} Beds</div>
+            <div class="col">{{ apartment.bathrooms }} Bathrooms</div>
+            <div class="col">{{ apartment.mq }} Mq</div>
+          </div>
+        </div>
+        <div class="container mt-5">
+          <div class="row row-cols-2">
+            <div v-for="service in apartment.services" class="col">
+              <font-awesome-icon :icon="'fa-solid fa-' + service.icon" />
+              {{ service.name }}
+            </div>
+          </div>
+          <div>
+            <p class="fw-bold mt-5">{{ apartment.price }} € night</p>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </template>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.no-p {
+  padding: 0;
+}
+.main-info {
+  color: white;
+  background-color: royalblue;
+}
+
+img {
+  object-fit: cover;
+  width: 100%;
+}
+</style>
