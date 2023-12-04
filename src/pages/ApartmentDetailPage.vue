@@ -37,27 +37,37 @@ export default {
     }"
     >Go Back</RouterLink
   >
-  <div class="container mt-5 d-flex justify-content-around">
-    <div class="row">
-      <div class="col-5">
-        <img :src="apartment.cover_image" alt="" />
+  <div
+    class="container w-75 mt-5 d-flex justify-content-around col-sm-12 col-md-6"
+  >
+    <div class="row col-sm-1 col-md-2 w-100 d-flex flex-column flex-md-row">
+      <div class="col no-p me-4">
+        <img :src="apartment.cover_image" alt="" class="" />
       </div>
-      <div class="col-5 border no-p border-primary">
+      <div class="col border no-p border-primary">
         <div class="main-info">
           <h2>{{ apartment.name }}</h2>
           <h5>{{ apartment.address }}</h5>
         </div>
 
-        <div class="mt-5 p-2">
+        <div class="p-2">
           <p>{{ apartment.description }}</p>
         </div>
-        <div class="text-center mt-5">
-          <div class="row">
-            <div class="col">{{ apartment.rooms }} Rooms</div>
-            <div class="col">{{ apartment.beds }} Beds</div>
-            <div class="col">{{ apartment.bathrooms }} Bathrooms</div>
-            <div class="col">{{ apartment.mq }} Mq</div>
-          </div>
+        <div class="mt-3">
+          <ul class="row row-cols-2 mx-2 no-p">
+            <li class="col ms-border">
+              <strong>{{ apartment.rooms }}</strong> Rooms
+            </li>
+            <li class="col ms-border">
+              <strong>{{ apartment.beds }} </strong> Beds
+            </li>
+            <li class="col ms-border">
+              <strong>{{ apartment.bathrooms }}</strong> Baths
+            </li>
+            <li class="col ms-border">
+              <strong>{{ apartment.mq }}</strong> Mq
+            </li>
+          </ul>
         </div>
         <div class="container mt-5">
           <div class="row row-cols-2">
@@ -83,9 +93,14 @@ export default {
   color: white;
   background-color: royalblue;
 }
-
-img {
-  object-fit: cover;
-  width: 100%;
+div {
+  img {
+    object-fit: fill;
+    width: 100%;
+    // height: 100%;
+  }
+}
+ul {
+  list-style: none;
 }
 </style>
