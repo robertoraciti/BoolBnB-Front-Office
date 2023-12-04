@@ -78,11 +78,6 @@ export default {
 </script>
 
 <template>
-  <!-- <link
-    rel="stylesheet"
-    type="text/css"
-    href="https://api.tomtom.com/maps-sdk-for-web/cdn/plugins/SearchBox/3.1.12/SearchBox.css"
-  /> -->
   <link
     rel="stylesheet"
     href="../../node_modules/@tomtom-international/web-sdk-plugin-searchbox/dist/SearchBox.css"
