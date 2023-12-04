@@ -1,5 +1,6 @@
 <script>
 import axios from "axios";
+import { store } from "../../data/store.js";
 
 export default {
   data() {
@@ -18,9 +19,9 @@ export default {
     async submit() {
       console.log(this.form);
       axios
-        .post("where api", this.form)
+        .post(store.api.baseUrl + "message", this.form)
         .then((response) => {
-          console.log(response.data);
+          console.log(response);
         })
         .catch((error) => {
           // this.$router.push({ name: "not-found" });
