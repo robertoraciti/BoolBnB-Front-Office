@@ -1,4 +1,6 @@
 <script>
+import axios from "axios";
+
 export default {
   data() {
     return {
@@ -11,6 +13,19 @@ export default {
   },
   props: {
     apartment: Object,
+  },
+  methods: {
+    async submit() {
+      console.log(this.form);
+      axios
+        .post("where api", this.form)
+        .then((response) => {
+          console.log(response.data);
+        })
+        .catch((error) => {
+          // this.$router.push({ name: "not-found" });
+        });
+    },
   },
 };
 </script>
