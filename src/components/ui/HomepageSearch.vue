@@ -77,6 +77,7 @@ export default {
   },
 };
 </script>
+
 <template>
   <link
     rel="stylesheet"

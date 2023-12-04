@@ -76,6 +76,7 @@ export default {
   },
 };
 </script>
+
 <template>
   <!-- <link
     rel="stylesheet"
@@ -128,7 +129,7 @@ export default {
       <button class="btn btn-primary mt-3" @click="geocoding()">Search</button>
     </div>
 
-    <h2>Results:</h2>
+    <h2 class="text-center">Results:</h2>
     <p v-for="(apartment, index) in apartmentsList">{{ apartment.name }}</p>
   </div>
 </template>
@@ -138,11 +139,7 @@ export default {
   width: 80%;
   margin: auto;
   border-radius: 10px;
-  height: 500px;
-  // display: flex;
-  // flex-direction: column;
-  // justify-content: center;
-  // align-items: center;
+  min-height: 500px;
 
   background-color: lightgrey;
 }
