@@ -38,7 +38,7 @@ export default {
     getApartmentList() {
       axios
         .get(
-          `http://127.0.0.1:8000/api/search/${this.lat}/${this.lng}/${this.radius}`
+          `http://localhost/api/search/${this.lat}/${this.lng}/${this.radius}`
         )
         .then((res) => {
           console.log(res);
