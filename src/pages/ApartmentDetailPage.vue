@@ -2,6 +2,9 @@
 import axios from "axios";
 import { store } from "../data/store";
 
+// cose da far importare
+import messageForm from "../components/modals/MessageForm.vue";
+
 export default {
   data() {
     return {
@@ -13,6 +16,7 @@ export default {
       },
     };
   },
+  components: { messageForm },
 
   created() {
     console.log(store.api.baseUrl + "apartments/" + this.$route.params.id);
@@ -73,6 +77,17 @@ export default {
       </div>
     </div>
   </div>
+
+  <button
+    type="button"
+    class="btn btn-primary"
+    data-bs-toggle="modal"
+    :data-bs-target="'#messageModal-' + apartment.id"
+  >
+    Send message
+  </button>
+
+  <messageForm :apartment="apartment"></messageForm>
 </template>
 
 <style lang="scss" scoped>
