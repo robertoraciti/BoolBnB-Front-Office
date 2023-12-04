@@ -8,7 +8,8 @@ export default {
       form: {
         name: "",
         email: "",
-        message: "",
+        text: "",
+        apartment_id: this.apartment.id,
       },
     };
   },
@@ -17,11 +18,11 @@ export default {
   },
   methods: {
     async submit() {
-      console.log(this.form);
+      // console.log(this.form);
       axios
         .post(store.api.baseUrl + "message", this.form)
         .then((response) => {
-          console.log(response);
+          console.log("sent");
         })
         .catch((error) => {
           // this.$router.push({ name: "not-found" });
@@ -86,7 +87,7 @@ export default {
                 id="exampleFormControlTextarea1"
                 rows="3"
                 required
-                v-model="form.message"
+                v-model="form.text"
               ></textarea>
             </div>
           </div>
