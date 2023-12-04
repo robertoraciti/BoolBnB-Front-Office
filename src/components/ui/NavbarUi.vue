@@ -55,10 +55,26 @@ export default {
               >Advanced filter</router-link
             >
           </li>
+          <a
+            href="http://localhost:8000/login"
+            class="nav-link mx-3"
+            aria-current="page"
+            >Log-In</a
+          >
+          <a
+            href="http://localhost:8000/register"
+            class="nav-link mx-3"
+            aria-current="page"
+            >Register</a
+          >
         </ul>
       </div>
     </div>
   </nav>
 </template>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+a {
+  margin-left: 0;
+}
+</style>

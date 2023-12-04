@@ -53,7 +53,7 @@ export default {
       </ul>
     </nav>
   </div>
-  <div class="row row-cols-3 g-4">
+  <div class="row g-4">
     <AppCard v-for="apartment in apartments" :apartment="apartment" />
   </div>
   <div class="container">
