@@ -37,7 +37,7 @@ export default {
     class="modal fade"
     :id="'messageModal-' + apartment.id"
     tabindex="-1"
-    aria-labelledby="exampleModalLabel"
+    aria-labelledby="messageModal"
     aria-hidden="true"
   >
     <div class="modal-dialog">
@@ -66,25 +66,23 @@ export default {
               />
             </div>
             <div class="mb-3">
-              <label for="exampleFormControlInput1" class="form-label"
+              <label for="email" class="form-label"
                 >Insert email address *</label
               >
               <input
                 type="email"
                 class="form-control"
-                id="exampleFormControlInput1"
+                id="email"
                 placeholder="name@example.com"
                 required
                 v-model="form.email"
               />
             </div>
             <div class="mb-3">
-              <label for="exampleFormControlTextarea1" class="form-label"
-                >Insert message *</label
-              >
+              <label for="text" class="form-label">Insert message *</label>
               <textarea
                 class="form-control"
-                id="exampleFormControlTextarea1"
+                id="text"
                 rows="3"
                 required
                 v-model="form.text"
