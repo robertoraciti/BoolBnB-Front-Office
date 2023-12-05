@@ -53,10 +53,10 @@ export default {
       let popupoffsett = 25;
 
       let marker = new tt.Marker().setLngLat(location).addTo(map);
-      let popup = new tt.Popup({ offset: popupOffsett }).setHtml(
-        "Your address!"
-      );
-      marker.setPopup(popup).togglePopup();
+      // let popup = new tt.Popup({ offset: popupOffsett }).setHtml(
+      //   "Your address!"
+      // );
+      // marker.setPopup(popup).togglePopup();
     }
   },
 
