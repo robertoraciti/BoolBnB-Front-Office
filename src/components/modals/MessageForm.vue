@@ -97,7 +97,13 @@ export default {
             >
               Close
             </button>
-            <button type="submit" class="btn btn-primary">submit</button>
+            <button
+              type="submit"
+              class="btn btn-primary"
+              data-bs-dismiss="modal"
+            >
+              submit
+            </button>
           </div>
         </form>
       </div>
