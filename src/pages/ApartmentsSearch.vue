@@ -12,9 +12,23 @@ export default {
       radius: "20",
       rooms: 1,
       beds: 1,
+      services: [],
       apartmentsList: [],
-      apartmentsCoordinates: [],
     };
+  },
+
+  computed: {
+    activeFilters() {
+      const activeServices = [];
+
+      this.services.forEach((service) => {
+        if (service.active) activeServices.push(service.id);
+      });
+
+      return {
+        activeServices,
+      };
+    },
   },
 
   methods: {
@@ -45,6 +59,17 @@ export default {
         });
     },
 
+    fetchServices() {
+      axios.get("http://127.0.0.1:8000/api/services").then((response) => {
+        this.services = response.data.map((service) => {
+          return {
+            ...service,
+            active: false,
+          };
+        });
+      });
+    },
+
     autocompleteAddress() {
       var options = {
         searchOptions: {
@@ -68,6 +93,10 @@ export default {
         choiceAddress.value = data.data.result.address.freeformAddress;
       });
     },
+  },
+
+  created() {
+    this.fetchServices();
   },
 
   mounted() {
