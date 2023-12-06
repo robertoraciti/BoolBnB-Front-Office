@@ -66,35 +66,41 @@ export default {
           <h2>{{ apartment.name }}</h2>
           <h5>{{ apartment.address }}</h5>
         </div>
-
-        <div class="p-2">
-          <p>{{ apartment.description }}</p>
-        </div>
-        <div class="mt-3">
-          <ul class="row row-cols-2 mx-2 no-p">
-            <li class="col ms-border">
-              <strong>{{ apartment.rooms }}</strong> Rooms
-            </li>
-            <li class="col ms-border">
-              <strong>{{ apartment.beds }} </strong> Beds
-            </li>
-            <li class="col ms-border">
-              <strong>{{ apartment.bathrooms }}</strong> Baths
-            </li>
-            <li class="col ms-border">
-              <strong>{{ apartment.mq }}</strong> Mq
-            </li>
-          </ul>
-        </div>
-        <div class="container mt-5">
-          <div class="row row-cols-2">
-            <div v-for="service in apartment.services" class="col">
-              <font-awesome-icon :icon="'fa-solid fa-' + service.icon" />
-              {{ service.name }}
-            </div>
+        <div class="col border no-p border-primary">
+          <div class="main-info">
+            <h2>{{ apartment.name }}</h2>
+            <h5>{{ apartment.address }}</h5>
           </div>
-          <div>
-            <p class="fw-bold mt-5">{{ apartment.price }} € night</p>
+
+          <div class="p-2">
+            <p>{{ apartment.description }}</p>
+          </div>
+          <div class="mt-3">
+            <ul class="row row-cols-2 mx-2 no-p">
+              <li class="col ms-border">
+                <strong>{{ apartment.rooms }}</strong> Rooms
+              </li>
+              <li class="col ms-border">
+                <strong>{{ apartment.beds }} </strong> Beds
+              </li>
+              <li class="col ms-border">
+                <strong>{{ apartment.bathrooms }}</strong> Baths
+              </li>
+              <li class="col ms-border">
+                <strong>{{ apartment.mq }}</strong> Mq
+              </li>
+            </ul>
+          </div>
+          <div class="container mt-5">
+            <div class="row row-cols-2">
+              <div v-for="service in apartment.services" class="col">
+                <font-awesome-icon :icon="'fa-solid fa-' + service.icon" />
+                {{ service.name }}
+              </div>
+            </div>
+            <div>
+              <p class="fw-bold mt-5">{{ apartment.price }} € night</p>
+            </div>
           </div>
         </div>
       </div>
@@ -117,6 +123,10 @@ export default {
 </template>
 
 <style lang="scss" scoped>
+.msmargin {
+  margin-top: 100px;
+}
+
 .no-p {
   padding: 0;
 }
