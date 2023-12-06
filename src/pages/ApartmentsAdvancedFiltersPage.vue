@@ -2,8 +2,8 @@
 import axios from "axios";
 import { store } from "../data/store";
 
-// import { services } from "@tomtom-international/web-sdk-services";
-// import SearchBox from "@tomtom-international/web-sdk-plugin-searchbox";
+import { services } from "@tomtom-international/web-sdk-services";
+import SearchBox from "@tomtom-international/web-sdk-plugin-searchbox";
 
 import AppCard from "../components/apartments/AppCard.vue";
 
@@ -12,38 +12,54 @@ export default {
     return {
       filteredApartments: [],
       apartmentServices: [],
-      // apiKey: "k9U6D8g43D9rsDAaXC4vgkIc4Ko56P7d",
-      // lng: "",
-      // lat: "",
-      // radius: "20",
-      // rooms: 1,
-      // beds: 1,
-      // apartmentsList: [],
-      // apartmentsCoordinates: [],
+      apiKey: "k9U6D8g43D9rsDAaXC4vgkIc4Ko56P7d",
+      lng: "",
+      lat: "",
+      radius: 20,
+      rooms: 1,
+      beds: 1,
+      apartmentsList: [],
+      apartmentsCoordinates: [],
     };
   },
 
   computed: {
     activeFilters() {
       const activeApartmentServices = [];
+      const activeLat = [];
+      const activeLng = [];
+      const activeRadius = [];
+      const activeRooms = [];
+      const activeBeds = [];
 
       this.apartmentServices.forEach((apartmentService) => {
         if (apartmentService.active)
           activeApartmentServices.push(apartmentService.id);
       });
 
+      activeLat.push(this.lat);
+      activeLng.push(this.lng);
+      activeRadius.push(this.radius);
+      activeRooms.push(this.rooms);
+      activeBeds.push(this.beds);
+
       return {
         activeApartmentServices,
+        activeLat,
+        activeLng,
+        activeRadius,
+        activeRooms,
+        activeBeds,
       };
     },
   },
 
   components: { AppCard },
 
-  // mounted() {
-  //   this.autocompleteAddress();
-  //   this.geocoding();
-  // },
+  mounted() {
+    this.autocompleteAddress();
+    this.geocoding();
+  },
 
   methods: {
     fetchApartments() {
@@ -80,22 +96,22 @@ export default {
       this.fetchApartments();
     },
 
-    // geocoding() {
-    //   let getAddress = document.getElementById("address").value;
-    //   services
-    //     .geocode({
-    //       key: this.apiKey,
-    //       query: getAddress,
-    //       bestResult: true,
-    //     })
-    //     .then((res) => {
-    //       console.log(res);
-    //       this.lng = res.position.lng;
-    //       this.lat = res.position.lat;
+    geocoding() {
+      let getAddress = document.getElementById("address").value;
+      services
+        .geocode({
+          key: this.apiKey,
+          query: getAddress,
+          bestResult: true,
+        })
+        .then((res) => {
+          console.log(res);
+          this.lng = res.position.lng;
+          this.lat = res.position.lat;
 
-    //       this.getApartmentList();
-    //     });
-    // },
+          // this.getApartmentList();
+        });
+    },
     // // Chimata axios filter apartments
     // getApartmentList() {
     //   axios
@@ -107,29 +123,29 @@ export default {
     //     });
     // },
 
-    // autocompleteAddress() {
-    //   var options = {
-    //     searchOptions: {
-    //       key: "k9U6D8g43D9rsDAaXC4vgkIc4Ko56P7d",
-    //       language: "en-EN",
-    //       limit: 5,
-    //     },
-    //     autocompleteOptions: {
-    //       key: "k9U6D8g43D9rsDAaXC4vgkIc4Ko56P7d",
-    //       language: "it-IT",
-    //     },
-    //   };
-    //   var ttSearchBox = new SearchBox(services, options);
-    //   var searchBoxHTML = ttSearchBox.getSearchBoxHTML();
-    //   let address_search = document.getElementById("address_search");
-    //   address_search.append(searchBoxHTML);
+    autocompleteAddress() {
+      var options = {
+        searchOptions: {
+          key: "k9U6D8g43D9rsDAaXC4vgkIc4Ko56P7d",
+          language: "en-EN",
+          limit: 5,
+        },
+        autocompleteOptions: {
+          key: "k9U6D8g43D9rsDAaXC4vgkIc4Ko56P7d",
+          language: "it-IT",
+        },
+      };
+      var ttSearchBox = new SearchBox(services, options);
+      var searchBoxHTML = ttSearchBox.getSearchBoxHTML();
+      let address_search = document.getElementById("address_search");
+      address_search.append(searchBoxHTML);
 
-    //   ttSearchBox.on("tomtom.searchbox.resultselected", function (data) {
-    //     console.log(data.data.result.address.freeformAddress);
-    //     let choiceAddress = document.getElementById("address");
-    //     choiceAddress.value = data.data.result.address.freeformAddress;
-    //   });
-    // },
+      ttSearchBox.on("tomtom.searchbox.resultselected", function (data) {
+        console.log(data.data.result.address.freeformAddress);
+        let choiceAddress = document.getElementById("address");
+        choiceAddress.value = data.data.result.address.freeformAddress;
+      });
+    },
   },
 
   created() {
@@ -168,7 +184,7 @@ export default {
       </div>
     </div>
   </div>
-  <!-- <link
+  <link
     rel="stylesheet"
     href="../../node_modules/@tomtom-international/web-sdk-plugin-searchbox/dist/SearchBox.css"
   />
@@ -216,7 +232,7 @@ export default {
 
     <h2 class="text-center">Results:</h2>
     <p v-for="(apartment, index) in apartmentsList">{{ apartment.name }}</p>
-  </div> -->
+  </div>
 </template>
 
 <style lang="scss" scoped>
@@ -232,12 +248,12 @@ export default {
   background-color: rgb(114, 114, 189);
 }
 
-// .wrapper {
-//   width: 80%;
-//   margin: auto;
-//   border-radius: 10px;
-//   min-height: 500px;
+.wrapper {
+  width: 80%;
+  margin: auto;
+  border-radius: 10px;
+  min-height: 500px;
 
-//   background-color: lightgrey;
-// }
+  background-color: lightgrey;
+}
 </style>
