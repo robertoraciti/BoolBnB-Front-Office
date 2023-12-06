@@ -30,54 +30,55 @@ export default {
 </script>
 
 <template>
-  <RouterLink
-    class="btn btn-primary ms-5 mt-3"
-    :to="{
-      name: 'home',
-    }"
-    >Go Back</RouterLink
-  >
-  <div
-    class="container w-75 mt-5 d-flex justify-content-around col-sm-12 col-md-6"
-  >
-    <div class="row col-sm-1 col-md-2 w-100 d-flex flex-column flex-md-row">
-      <div class="col no-p me-4">
-        <img :src="apartment.cover_image" alt="" class="" />
-      </div>
-      <div class="col border no-p border-primary">
-        <div class="main-info">
-          <h2>{{ apartment.name }}</h2>
-          <h5>{{ apartment.address }}</h5>
+  <div class="msmargin">
+    <RouterLink
+      class="btn btn-outline-primary ms-5 mt-3"
+      :to="{
+        name: 'home',
+      }"
+      >Go Back</RouterLink
+    >
+    <div
+      class="container w-75 mt-5 d-flex justify-content-around col-sm-12 col-md-6">
+      <div class="row col-sm-1 col-md-2 w-100 d-flex flex-column flex-md-row">
+        <div class="col no-p me-4">
+          <img :src="apartment.cover_image" alt="" class="" />
         </div>
-
-        <div class="p-2">
-          <p>{{ apartment.description }}</p>
-        </div>
-        <div class="mt-3">
-          <ul class="row row-cols-2 mx-2 no-p">
-            <li class="col ms-border">
-              <strong>{{ apartment.rooms }}</strong> Rooms
-            </li>
-            <li class="col ms-border">
-              <strong>{{ apartment.beds }} </strong> Beds
-            </li>
-            <li class="col ms-border">
-              <strong>{{ apartment.bathrooms }}</strong> Baths
-            </li>
-            <li class="col ms-border">
-              <strong>{{ apartment.mq }}</strong> Mq
-            </li>
-          </ul>
-        </div>
-        <div class="container mt-5">
-          <div class="row row-cols-2">
-            <div v-for="service in apartment.services" class="col">
-              <font-awesome-icon :icon="'fa-solid fa-' + service.icon" />
-              {{ service.name }}
-            </div>
+        <div class="col border no-p border-primary">
+          <div class="main-info">
+            <h2>{{ apartment.name }}</h2>
+            <h5>{{ apartment.address }}</h5>
           </div>
-          <div>
-            <p class="fw-bold mt-5">{{ apartment.price }} € night</p>
+
+          <div class="p-2">
+            <p>{{ apartment.description }}</p>
+          </div>
+          <div class="mt-3">
+            <ul class="row row-cols-2 mx-2 no-p">
+              <li class="col ms-border">
+                <strong>{{ apartment.rooms }}</strong> Rooms
+              </li>
+              <li class="col ms-border">
+                <strong>{{ apartment.beds }} </strong> Beds
+              </li>
+              <li class="col ms-border">
+                <strong>{{ apartment.bathrooms }}</strong> Baths
+              </li>
+              <li class="col ms-border">
+                <strong>{{ apartment.mq }}</strong> Mq
+              </li>
+            </ul>
+          </div>
+          <div class="container mt-5">
+            <div class="row row-cols-2">
+              <div v-for="service in apartment.services" class="col">
+                <font-awesome-icon :icon="'fa-solid fa-' + service.icon" />
+                {{ service.name }}
+              </div>
+            </div>
+            <div>
+              <p class="fw-bold mt-5">{{ apartment.price }} € night</p>
+            </div>
           </div>
         </div>
       </div>
@@ -86,6 +87,10 @@ export default {
 </template>
 
 <style lang="scss" scoped>
+.msmargin {
+  margin-top: 100px;
+}
+
 .no-p {
   padding: 0;
 }

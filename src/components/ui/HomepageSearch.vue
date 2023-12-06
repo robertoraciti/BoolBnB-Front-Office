@@ -81,15 +81,16 @@ export default {
 <template>
   <link
     rel="stylesheet"
-    href="../../node_modules/@tomtom-international/web-sdk-plugin-searchbox/dist/SearchBox.css"
-  />
-  <div class="wrapper my-5">
-    <div class="container mt-5">
-      <h2>Ricerca:</h2>
-      <br />
+    href="../../node_modules/@tomtom-international/web-sdk-plugin-searchbox/dist/SearchBox.css" />
+  <div class="wrapper">
+    <div class="container">
+      <!-- <h2>Ricerca:</h2> -->
+
       <div id="address_search"></div>
       <input type="hidden" class="form-control" id="address" name="address" />
-      <button class="btn btn-primary mt-3" @click="geocoding()">Search</button>
+      <button class="btn btn-outline-primary mt-3" @click="geocoding()">
+        Search
+      </button>
     </div>
 
     <div class="container mt-5">
@@ -99,4 +100,8 @@ export default {
   </div>
 </template>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.wrapper {
+  margin-top: 100px;
+}
+</style>

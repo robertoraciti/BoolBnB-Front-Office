@@ -16,35 +16,53 @@ export default {
 </script>
 
 <template>
-  <div class="col-12 col-sm-6 col-md-4">
-    <div class="card h-100">
+  <div class="col-12 col-sm-6 col-md-2">
+    <div class="card h-100 border-0">
       <div class="card-body">
-        <img :src="apartment.cover_image" alt="" class="h-50 w-100" />
-        <h4>{{ apartment.name }}</h4>
+        <RouterLink
+          class=""
+          style="
+            --bs-btn-padding-y: 0.25rem;
+            --bs-btn-padding-x: 0.5rem;
+            --bs-btn-font-size: 0.75rem;
+          "
+          :to="{
+            name: 'apartment',
+            params: {
+              id: apartment.id,
+            },
+          }">
+          <img :src="apartment.cover_image" alt="" class="h-50 w-100 rounded" />
+          <h5>{{ apartment.address }}</h5>
+          <!-- <p class="small">{{ apartment.address }}</p> -->
+        </RouterLink>
         <p>{{ apartment.description }}</p>
-        <p class="mt-auto">
-          <strong>{{ apartment.price }} € </strong> Night
-        </p>
+        <div class="my-5">
+          <div>
+            <span class="fs-4">{{ apartment.price }} €</span>
+            /Night
+          </div>
+        </div>
       </div>
-      <RouterLink
-        class="d-flex justify-content-center align-self-center btn btn-primary px-3 my-2"
-        :to="{
-          name: 'apartment',
-          params: {
-            id: apartment.id,
-          },
-        }"
-        >Details
-      </RouterLink>
     </div>
   </div>
 </template>
 
 <style scoped>
+.small {
+  font-size: 12px;
+}
+h4,
+h5,
 p {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
   max-width: 300px;
+}
+
+.card-body a {
+  text-decoration: none;
+  color: black;
 }
 </style>

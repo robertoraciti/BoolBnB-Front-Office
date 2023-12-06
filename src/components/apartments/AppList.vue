@@ -39,19 +39,18 @@ export default {
 };
 </script>
 <template>
-  <div class="container">
-    <nav aria-label="Page navigation example">
+  <div class="container-fluid">
+    <!-- <nav aria-label="Page navigation example">
       <ul class="pagination d-flex justify-content-center">
         <li
           v-for="link in pagination.links"
           @click="fetchProjects(link.url)"
           class="page-item"
-          :class="link.active ? 'active' : ''"
-        >
+          :class="link.active ? 'active' : ''">
           <a class="page-link" v-html="link.label"></a>
         </li>
       </ul>
-    </nav>
+    </nav> -->
   </div>
   <div class="row g-4">
     <AppCard v-for="apartment in apartments" :apartment="apartment" />
@@ -63,8 +62,7 @@ export default {
           v-for="link in pagination.links"
           @click="fetchProjects(link.url)"
           class="page-item"
-          :class="link.active ? 'active' : ''"
-        >
+          :class="link.active ? 'active' : ''">
           <a class="page-link" v-html="link.label"></a>
         </li>
       </ul>
