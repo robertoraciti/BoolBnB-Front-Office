@@ -2,6 +2,12 @@
 import axios from "axios";
 import { store } from "../data/store";
 
+// import mappa
+import tomMap from "../components/tomtom/map.vue";
+
+// cose da far importare
+import messageForm from "../components/modals/MessageForm.vue";
+
 export default {
   data() {
     return {
@@ -13,6 +19,7 @@ export default {
       },
     };
   },
+  components: { messageForm, tomMap },
 
   created() {
     console.log(store.api.baseUrl + "apartments/" + this.$route.params.id);
@@ -30,19 +37,34 @@ export default {
 </script>
 
 <template>
-  <div class="msmargin">
+  <div class="container mt-3 d-flex justify-content-between">
     <RouterLink
-      class="btn btn-outline-primary ms-5 mt-3"
+      class="btn btn-primary ms-3"
       :to="{
         name: 'home',
       }"
       >Go Back</RouterLink
     >
-    <div
-      class="container w-75 mt-5 d-flex justify-content-around col-sm-12 col-md-6">
-      <div class="row col-sm-1 col-md-2 w-100 d-flex flex-column flex-md-row">
-        <div class="col no-p me-4">
-          <img :src="apartment.cover_image" alt="" class="" />
+    <button
+      type="button"
+      class="btn btn-success"
+      data-bs-toggle="modal"
+      :data-bs-target="'#messageModal-' + apartment.id"
+    >
+      Send message
+    </button>
+  </div>
+  <div
+    class="container w-75 mt-5 d-flex justify-content-around col-sm-12 col-md-4"
+  >
+    <div class="row col-sm-1 col-md-2 w-100 d-flex flex-column flex-md-row">
+      <div class="col no-p me-4">
+        <img :src="apartment.cover_image" alt="" class="" />
+      </div>
+      <div class="col border no-p border-primary">
+        <div class="main-info">
+          <h2>{{ apartment.name }}</h2>
+          <h5>{{ apartment.address }}</h5>
         </div>
         <div class="col border no-p border-primary">
           <div class="main-info">
@@ -82,8 +104,22 @@ export default {
           </div>
         </div>
       </div>
+      <div class="col">
+        <tomMap :apartment="apartment" />
+      </div>
     </div>
   </div>
+
+  <!-- <button
+    type="button"
+    class="btn btn-primary"
+    data-bs-toggle="modal"
+    :data-bs-target="'#messageModal-' + apartment.id"
+  >
+    Send message
+  </button> -->
+
+  <messageForm :apartment="apartment"></messageForm>
 </template>
 
 <style lang="scss" scoped>
