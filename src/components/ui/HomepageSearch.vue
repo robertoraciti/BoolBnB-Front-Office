@@ -46,34 +46,34 @@ export default {
         });
     },
 
-    //   autocompleteAddress() {
-    //     var options = {
-    //       searchOptions: {
-    //         key: "k9U6D8g43D9rsDAaXC4vgkIc4Ko56P7d",
-    //         language: "en-EN",
-    //         limit: 5,
-    //       },
-    //       autocompleteOptions: {
-    //         key: "k9U6D8g43D9rsDAaXC4vgkIc4Ko56P7d",
-    //         language: "it-IT",
-    //       },
-    //     };
-    //     var ttSearchBox = new SearchBox(services, options);
-    //     var searchBoxHTML = ttSearchBox.getSearchBoxHTML();
-    //     let address_search = document.getElementById("address_search");
-    //     address_search.append(searchBoxHTML);
+    autocompleteAddress() {
+      var options = {
+        searchOptions: {
+          key: "k9U6D8g43D9rsDAaXC4vgkIc4Ko56P7d",
+          language: "en-EN",
+          limit: 5,
+        },
+        autocompleteOptions: {
+          key: "k9U6D8g43D9rsDAaXC4vgkIc4Ko56P7d",
+          language: "it-IT",
+        },
+      };
+      var ttSearchBox = new SearchBox(services, options);
+      var searchBoxHTML = ttSearchBox.getSearchBoxHTML();
+      let address_search = document.getElementById("address_search");
+      address_search.append(searchBoxHTML);
 
-    //     ttSearchBox.on("tomtom.searchbox.resultselected", function (data) {
-    //       console.log(data.data.result.address.freeformAddress);
-    //       let choiceAddress = document.getElementById("address");
-    //       choiceAddress.value = data.data.result.address.freeformAddress;
-    //     });
-    //   },
-    // },
+      ttSearchBox.on("tomtom.searchbox.resultselected", function (data) {
+        console.log(data.data.result.address.freeformAddress);
+        let choiceAddress = document.getElementById("address");
+        choiceAddress.value = data.data.result.address.freeformAddress;
+      });
+    },
+  },
 
-    // mounted() {
-    //   this.autocompleteAddress();
-    //   this.geocoding();
+  mounted() {
+    this.autocompleteAddress();
+    this.geocoding();
   },
 };
 </script>
@@ -101,14 +101,14 @@ export default {
       <div>
         <button class="button mt-2" @click="geocoding()">Search</button>
       </div>
-      <RouterLink
+      <!-- <RouterLink
         class="btn btn-warning"
         :to="{
           name: 'advanced-search',
         }"
       >
         Filtered Search
-      </RouterLink>
+      </RouterLink> -->
     </div>
 
     <div class="container mt-5">
