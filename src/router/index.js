@@ -28,13 +28,13 @@ const router = createRouter({
     },
     {
       name: "advanced-search",
-      path: "/search",
+      path: "/advanced-search",
       component: ApartmentsSearch,
     },
     {
-    name: "advanced-filter",
-    path: "/advanced-filter",
-    component: AdvancedFilters, 
+      name: "advanced-filter",
+      path: "/advanced-filter",
+      component: AdvancedFilters,
     },
     // {
     //   path: "/project/type/:type_id",

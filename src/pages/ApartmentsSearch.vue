@@ -117,6 +117,7 @@ export default {
 </script>
 
 <template>
+  <h1>lat:{{ $route.query.lat }}</h1>
   <link
     rel="stylesheet"
     href="../../node_modules/@tomtom-international/web-sdk-plugin-searchbox/dist/SearchBox.css"
