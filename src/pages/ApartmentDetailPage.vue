@@ -37,7 +37,7 @@ export default {
 </script>
 
 <template>
-  <div class="container mt-3 d-flex justify-content-between">
+  <div class="container d-flex justify-content-between msmargin">
     <RouterLink
       class="btn btn-primary ms-3"
       :to="{
