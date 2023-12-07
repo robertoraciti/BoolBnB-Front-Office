@@ -50,13 +50,13 @@ export default {
         parseFloat(props.apartment.longitude),
         parseFloat(props.apartment.latitude),
       ];
-      let popupoffsett = 25;
+      // let popupoffsett = 25;
 
       let marker = new tt.Marker().setLngLat(location).addTo(map);
-      let popup = new tt.Popup({ offset: popupOffsett }).setHtml(
-        "Your address!"
-      );
-      marker.setPopup(popup).togglePopup();
+      // let popup = new tt.Popup({ offset: popupOffsett }).setHtml(
+      //   "Your address!"
+      // );
+      // marker.setPopup(popup).togglePopup();
     }
   },
 
