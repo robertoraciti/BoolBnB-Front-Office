@@ -26,6 +26,8 @@ import { faFireExtinguisher } from "@fortawesome/free-solid-svg-icons";
 import { faFan } from "@fortawesome/free-solid-svg-icons";
 import { faSoap } from "@fortawesome/free-solid-svg-icons";
 import { faMugHot } from "@fortawesome/free-solid-svg-icons";
+import { faInstagram } from "@fortawesome/free-brands-svg-icons";
+import { faFacebook } from "@fortawesome/free-brands-svg-icons";
 
 / add icons to the library */;
 library.add(
@@ -40,7 +42,9 @@ library.add(
   faFireExtinguisher,
   faFan,
   faSoap,
-  faMugHot
+  faMugHot,
+  faInstagram,
+  faFacebook
 );
 
 const app = createApp(App);
