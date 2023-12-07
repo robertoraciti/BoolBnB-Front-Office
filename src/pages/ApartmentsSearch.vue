@@ -65,7 +65,7 @@ export default {
     },
 
     fetchServices() {
-      axios.get("http://127.0.0.1:8000/api/services").then((response) => {
+      axios.get("http://localhost:8000/api/services").then((response) => {
         this.services = response.data.map((service) => {
           return {
             ...service,

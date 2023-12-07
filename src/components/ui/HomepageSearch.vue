@@ -83,13 +83,24 @@ export default {
     rel="stylesheet"
     href="../../node_modules/@tomtom-international/web-sdk-plugin-searchbox/dist/SearchBox.css"
   />
-  <div class="wrapper">
-    <div class="container">
-      <!-- <h2>Ricerca:</h2> -->
 
-      <!-- <div id="address_search">
-        <button @click="geocoding()">Search</button>
-      </div> -->
+  <div class="wrapper container">
+    <div class="title-jumbo py-3">
+      <h1>Your dream house is just a click away...</h1>
+    </div>
+
+    <div class="d-flex justify-content-center align-items-center">
+      <div class="w-50 mx-4"><div id="address_search"></div></div>
+      <!-- searchbar type hidden -->
+      <input
+        type="hidden"
+        class="form-control w-25"
+        id="address"
+        name="address"
+      />
+      <div>
+        <button class="button mt-2" @click="geocoding()">Search</button>
+      </div>
       <RouterLink
         class="btn btn-warning"
         :to="{
@@ -98,11 +109,9 @@ export default {
       >
         Filtered Search
       </RouterLink>
-      <input type="hidden" class="form-control" id="address" name="address" />
     </div>
 
     <div class="container mt-5">
-      <!-- <h2>Risultati:</h2> -->
       <p v-for="(apartment, index) in apartmentsList">{{ apartment.name }}</p>
     </div>
   </div>
@@ -110,6 +119,28 @@ export default {
 
 <style lang="scss" scoped>
 .wrapper {
-  margin-top: 100px;
+  padding-top: 250px;
+}
+
+.title-jumbo {
+  color: black;
+  text-align: center;
+}
+
+.debug {
+  border: 1px solid red;
+}
+
+.button {
+  background-color: #a3c422;
+  border: 1px solid black;
+  padding: 5px 35px;
+  border-radius: 20px;
+  font-weight: 400;
+}
+
+.button:hover {
+  background-color: rgba(0, 0, 0, 0.615);
+  color: #a3c422;
 }
 </style>

@@ -16,9 +16,9 @@ export default {
 </script>
 
 <template>
-  <div class="col-12 col-sm-6 col-md-2">
+  <div class="col-12 col-sm-6 col-md-2 my-0">
     <div class="card h-100 border-0">
-      <div class="card-body">
+      <div class="card-body ccard">
         <RouterLink
           class=""
           style="
@@ -31,16 +31,17 @@ export default {
             params: {
               id: apartment.id,
             },
-          }">
+          }"
+        >
           <img :src="apartment.cover_image" alt="" class="h-50 w-100 rounded" />
           <h5>{{ apartment.address }}</h5>
           <!-- <p class="small">{{ apartment.address }}</p> -->
         </RouterLink>
         <p>{{ apartment.description }}</p>
-        <div class="my-5">
+        <div class="my-3">
           <div>
-            <span class="fs-4">{{ apartment.price }} €</span>
-            /Night
+            <span class="price">{{ apartment.price }} €</span>
+            / Night
           </div>
         </div>
       </div>
@@ -64,5 +65,18 @@ p {
 .card-body a {
   text-decoration: none;
   color: black;
+}
+
+.price {
+  font-weight: 700;
+  font-size: 18px;
+}
+
+.ccard {
+  height: 450px;
+}
+
+.debug {
+  border: 1px solid red;
 }
 </style>

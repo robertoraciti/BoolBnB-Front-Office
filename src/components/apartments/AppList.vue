@@ -1,5 +1,6 @@
 <script>
 import AppCard from "./AppCard.vue";
+import HomepageSearch from "../ui/HomepageSearch.vue";
 import axios from "axios";
 import { store } from "../../data/store";
 
@@ -15,7 +16,7 @@ export default {
     };
   },
   //   props: { type_id: Number },
-  components: { AppCard },
+  components: { AppCard, HomepageSearch },
   methods: {
     fetchProjects(uri = this.endpoint) {
       console.log(uri);
@@ -39,7 +40,14 @@ export default {
 };
 </script>
 <template>
-  <div class="container-fluid">
+  <div class="">
+    <div class="">
+      <!-- <div class="debug container-fluid">
+        <HomepageSearch></HomepageSearch>
+      </div> -->
+
+      <!-- <img src="../img/offgrid.jpg" alt="" /> -->
+    </div>
     <!-- <nav aria-label="Page navigation example">
       <ul class="pagination d-flex justify-content-center">
         <li
@@ -62,7 +70,8 @@ export default {
           v-for="link in pagination.links"
           @click="fetchProjects(link.url)"
           class="page-item"
-          :class="link.active ? 'active' : ''">
+          :class="link.active ? 'active' : ''"
+        >
           <a class="page-link" v-html="link.label"></a>
         </li>
       </ul>
@@ -72,5 +81,17 @@ export default {
 <style lang="scss" scoped>
 .pagination:hover {
   cursor: pointer;
+}
+
+.debug {
+  border: 1px solid red;
+}
+
+.page-item {
+  border: 1px solid red;
+}
+
+.active {
+  background-color: red !important;
 }
 </style>
