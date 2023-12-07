@@ -85,7 +85,7 @@ export default {
   />
   <div class="wrapper container">
     <div class="title-jumbo py-3">
-      <h1>Your dream home is just a click away...</h1>
+      <h1>Your dream house is just a click away...</h1>
     </div>
 
     <div class="d-flex justify-content-center align-items-center">
@@ -105,7 +105,6 @@ export default {
     </div>
 
     <div class="container mt-5">
-      <!-- <h2>Risultati:</h2> -->
       <p v-for="(apartment, index) in apartmentsList">{{ apartment.name }}</p>
     </div>
   </div>
@@ -120,6 +119,7 @@ export default {
   color: black;
   text-align: center;
 }
+
 .debug {
   border: 1px solid red;
 }

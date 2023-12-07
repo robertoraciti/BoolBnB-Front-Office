@@ -14,10 +14,22 @@ export default {
   <div class="">
     <!-- <h1>Homepage</h1> -->
     <div class="jumbo">
+      <div class="text-center pt-5"></div>
       <HomepageSearch></HomepageSearch>
     </div>
-    <div class="container-fluid my-5">
-      <h1>prova</h1>
+    <div class="container-fluid p-5 text-center">
+      <h6>search for the perfection</h6>
+      <div class="pb-5">
+        <img src="../components/img/keyy.png" alt="" class="key me-4" />
+        <button type="button" class="btn btn-dark">
+          <router-link
+            class="nav-link"
+            aria-current="page"
+            :to="{ name: 'advanced-search' }"
+            >Advanced Research</router-link
+          >
+        </button>
+      </div>
       <AppList></AppList>
     </div>
   </div>
@@ -25,12 +37,16 @@ export default {
 
 <style lang="scss" scoped>
 .jumbo {
-  background-image: url(../components/img/jmb2.png);
+  background-image: url(../components/img/jumbo2.png);
   margin: 0;
   padding: 0;
   height: 600px;
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
+}
+
+.key {
+  width: 100px;
 }
 </style>
