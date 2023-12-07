@@ -81,16 +81,27 @@ export default {
 <template>
   <link
     rel="stylesheet"
-    href="../../node_modules/@tomtom-international/web-sdk-plugin-searchbox/dist/SearchBox.css" />
-  <div class="wrapper">
-    <div class="container">
-      <!-- <h2>Ricerca:</h2> -->
+    href="../../node_modules/@tomtom-international/web-sdk-plugin-searchbox/dist/SearchBox.css"
+  />
+  <div class="wrapper container">
+    <div class="title-jumbo py-3">
+      <h1>Your dream home is just a click away...</h1>
+    </div>
 
-      <div id="address_search"></div>
-      <input type="hidden" class="form-control" id="address" name="address" />
-      <button class="btn btn-outline-primary mt-3" @click="geocoding()">
-        Search
-      </button>
+    <div class="d-flex justify-content-center align-items-center">
+      <div class="w-50 mx-4"><div id="address_search"></div></div>
+      <!-- searchbar type hidden -->
+      <input
+        type="hidden"
+        class="form-control w-25"
+        id="address"
+        name="address"
+      />
+      <div>
+        <button class="btn btn-primary mt-2" @click="geocoding()">
+          Search
+        </button>
+      </div>
     </div>
 
     <div class="container mt-5">
@@ -102,6 +113,14 @@ export default {
 
 <style lang="scss" scoped>
 .wrapper {
-  margin-top: 100px;
+  padding-top: 250px;
+}
+
+.title-jumbo {
+  color: black;
+  text-align: center;
+}
+.debug {
+  border: 1px solid red;
 }
 </style>

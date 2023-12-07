@@ -11,11 +11,26 @@ export default {
 </script>
 
 <template>
-  <div class="container-fluid">
+  <div class="">
     <!-- <h1>Homepage</h1> -->
-    <HomepageSearch></HomepageSearch>
-    <AppList></AppList>
+    <div class="jumbo">
+      <HomepageSearch></HomepageSearch>
+    </div>
+    <div class="container-fluid my-5">
+      <h1>prova</h1>
+      <AppList></AppList>
+    </div>
   </div>
 </template>
 
-<style lang="scss"></style>
+<style lang="scss" scoped>
+.jumbo {
+  background-image: url(../components/img/jmb2.png);
+  margin: 0;
+  padding: 0;
+  height: 600px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+</style>

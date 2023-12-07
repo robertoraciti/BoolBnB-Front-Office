@@ -8,7 +8,8 @@ export default {
 
 <template>
   <nav
-    class="navbar navbar-expand-lg fixed-top border-bottom border-primary bg-white text-black">
+    class="navbar navbar-expand-lg fixed-top border-bottom border-primary bg-white text-black"
+  >
     <div class="container-fluid">
       <a class="navbar-brand" href="#"><img src="../img/BoolBnB-logo.png" /></a>
       <button
@@ -18,12 +19,14 @@ export default {
         data-bs-target="#navbarNav"
         aria-controls="navbarNav"
         aria-expanded="false"
-        aria-label="Toggle navigation">
+        aria-label="Toggle navigation"
+      >
         <span class="navbar-toggler-icon"></span>
       </button>
       <div
         class="collapse navbar-collapse justify-content-between"
-        id="navbarNav">
+        id="navbarNav"
+      >
         <div>
           <ul class="navbar-nav">
             <li class="nav-item">
@@ -93,5 +96,13 @@ export default {
 a,
 router-link {
   color: black;
+}
+
+nav {
+  padding: 0;
+}
+
+.pz {
+  padding: 0;
 }
 </style>
