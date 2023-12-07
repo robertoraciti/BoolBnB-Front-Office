@@ -9,8 +9,8 @@ export default {
   data() {
     return {
       apiKey: "k9U6D8g43D9rsDAaXC4vgkIc4Ko56P7d",
-      lng: "",
-      lat: "",
+      lng: this.$route.params.lng,
+      lat: this.$route.params.lat,
       radius: 20,
       rooms: 1,
       beds: 1,
@@ -54,7 +54,7 @@ export default {
     // Chimata axios filter apartments
     getApartmentList() {
       axios
-        .get(
+        .post(
           `http://127.0.0.1:8000/api/search/${this.lat}/${this.lng}/${this.radius}/${this.rooms}/${this.beds}`,
           this.activeFilters,
           console.log(this.activeFilters)
@@ -84,12 +84,12 @@ export default {
       var options = {
         searchOptions: {
           key: "k9U6D8g43D9rsDAaXC4vgkIc4Ko56P7d",
-          language: "en-EN",
+          language: "en-GB",
           limit: 5,
         },
         autocompleteOptions: {
           key: "k9U6D8g43D9rsDAaXC4vgkIc4Ko56P7d",
-          language: "it-IT",
+          language: "en-GB",
         },
       };
       var ttSearchBox = new SearchBox(services, options);
