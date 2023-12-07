@@ -54,7 +54,7 @@ export default {
     // Chimata axios filter apartments
     getApartmentList() {
       axios
-        .get(
+        .post(
           `http://127.0.0.1:8000/api/search/${this.lat}/${this.lng}/${this.radius}/${this.rooms}/${this.beds}`,
           this.activeFilters,
           console.log(this.activeFilters)
