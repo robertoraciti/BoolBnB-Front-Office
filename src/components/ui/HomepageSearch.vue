@@ -94,7 +94,7 @@ export default {
     </div>
 
     <div class="container mt-5">
-      <h2>Risultati:</h2>
+      <!-- <h2>Risultati:</h2> -->
       <p v-for="(apartment, index) in apartmentsList">{{ apartment.name }}</p>
     </div>
   </div>

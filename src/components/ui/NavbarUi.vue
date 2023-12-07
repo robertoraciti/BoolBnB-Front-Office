@@ -67,16 +67,20 @@ export default {
                 href="http://localhost:8000/login"
                 class="nav-link"
                 aria-current="page"
-                >Log-In</a
-              >
+                ><button type="button" class="btn btn-outline-primary">
+                  Login
+                </button>
+              </a>
             </li>
             <li class="nav-item">
               <a
                 href="http://localhost:8000/register"
                 class="nav-link"
                 aria-current="page"
-                >Register</a
-              >
+                ><button type="button" class="btn btn-outline-danger">
+                  Register
+                </button>
+              </a>
             </li>
           </ul>
         </div>
@@ -88,6 +92,6 @@ export default {
 <style lang="scss" scoped>
 a,
 router-link {
-  margin-left: 0;
+  color: black;
 }
 </style>
