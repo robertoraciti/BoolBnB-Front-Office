@@ -21,7 +21,7 @@ export default {
       <h6>search for the perfection</h6>
       <div class="pb-5">
         <img src="../components/img/keyy.png" alt="" class="key me-4" />
-        <button type="button" class="btn btn-dark">
+        <button type="button" class="button">
           <router-link
             class="nav-link"
             aria-current="page"
@@ -47,6 +47,19 @@ export default {
 }
 
 .key {
-  width: 100px;
+  width: 130px;
+}
+
+.button {
+  background-color: black;
+  border: 1px solid #a3c422;
+  padding: 5px 35px;
+  border-radius: 20px;
+  font-weight: 400;
+  color: #a3c422;
+}
+
+.button:hover {
+  background-color: rgba(0, 0, 0, 0.615);
 }
 </style>

@@ -86,4 +86,12 @@ export default {
 .debug {
   border: 1px solid red;
 }
+
+.page-item {
+  border: 1px solid red;
+}
+
+.active {
+  background-color: red !important;
+}
 </style>

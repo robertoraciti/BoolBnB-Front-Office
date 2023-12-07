@@ -98,9 +98,7 @@ export default {
         name="address"
       />
       <div>
-        <button class="btn btn-primary mt-2" @click="geocoding()">
-          Search
-        </button>
+        <button class="button mt-2" @click="geocoding()">Search</button>
       </div>
     </div>
 
@@ -122,5 +120,18 @@ export default {
 
 .debug {
   border: 1px solid red;
+}
+
+.button {
+  background-color: #a3c422;
+  border: 1px solid black;
+  padding: 5px 35px;
+  border-radius: 20px;
+  font-weight: 400;
+}
+
+.button:hover {
+  background-color: rgba(0, 0, 0, 0.615);
+  color: #a3c422;
 }
 </style>
