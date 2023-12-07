@@ -121,7 +121,7 @@ export default {
     rel="stylesheet"
     href="../../node_modules/@tomtom-international/web-sdk-plugin-searchbox/dist/SearchBox.css"
   />
-  <div class="wrapper my-5">
+  <div class="wrapper">
     <div class="container mt-5">
       <h2 class="text-center">Search:</h2>
       <label for="address" class="form-label">Address</label>
@@ -200,6 +200,7 @@ export default {
   margin: auto;
   border-radius: 10px;
   min-height: 500px;
+  margin-top: 150px;
 
   background-color: lightgrey;
 }
