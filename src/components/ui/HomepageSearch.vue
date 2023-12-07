@@ -46,34 +46,34 @@ export default {
         });
     },
 
-    autocompleteAddress() {
-      var options = {
-        searchOptions: {
-          key: "k9U6D8g43D9rsDAaXC4vgkIc4Ko56P7d",
-          language: "en-EN",
-          limit: 5,
-        },
-        autocompleteOptions: {
-          key: "k9U6D8g43D9rsDAaXC4vgkIc4Ko56P7d",
-          language: "it-IT",
-        },
-      };
-      var ttSearchBox = new SearchBox(services, options);
-      var searchBoxHTML = ttSearchBox.getSearchBoxHTML();
-      let address_search = document.getElementById("address_search");
-      address_search.append(searchBoxHTML);
+    //   autocompleteAddress() {
+    //     var options = {
+    //       searchOptions: {
+    //         key: "k9U6D8g43D9rsDAaXC4vgkIc4Ko56P7d",
+    //         language: "en-EN",
+    //         limit: 5,
+    //       },
+    //       autocompleteOptions: {
+    //         key: "k9U6D8g43D9rsDAaXC4vgkIc4Ko56P7d",
+    //         language: "it-IT",
+    //       },
+    //     };
+    //     var ttSearchBox = new SearchBox(services, options);
+    //     var searchBoxHTML = ttSearchBox.getSearchBoxHTML();
+    //     let address_search = document.getElementById("address_search");
+    //     address_search.append(searchBoxHTML);
 
-      ttSearchBox.on("tomtom.searchbox.resultselected", function (data) {
-        console.log(data.data.result.address.freeformAddress);
-        let choiceAddress = document.getElementById("address");
-        choiceAddress.value = data.data.result.address.freeformAddress;
-      });
-    },
-  },
+    //     ttSearchBox.on("tomtom.searchbox.resultselected", function (data) {
+    //       console.log(data.data.result.address.freeformAddress);
+    //       let choiceAddress = document.getElementById("address");
+    //       choiceAddress.value = data.data.result.address.freeformAddress;
+    //     });
+    //   },
+    // },
 
-  mounted() {
-    this.autocompleteAddress();
-    this.geocoding();
+    // mounted() {
+    //   this.autocompleteAddress();
+    //   this.geocoding();
   },
 };
 </script>
@@ -81,16 +81,24 @@ export default {
 <template>
   <link
     rel="stylesheet"
-    href="../../node_modules/@tomtom-international/web-sdk-plugin-searchbox/dist/SearchBox.css" />
+    href="../../node_modules/@tomtom-international/web-sdk-plugin-searchbox/dist/SearchBox.css"
+  />
   <div class="wrapper">
     <div class="container">
       <!-- <h2>Ricerca:</h2> -->
 
-      <div id="address_search"></div>
+      <!-- <div id="address_search">
+        <button @click="geocoding()">Search</button>
+      </div> -->
+      <RouterLink
+        class="btn btn-warning"
+        :to="{
+          name: 'advanced-search',
+        }"
+      >
+        Filtered Search
+      </RouterLink>
       <input type="hidden" class="form-control" id="address" name="address" />
-      <button class="btn btn-outline-primary mt-3" @click="geocoding()">
-        Search
-      </button>
     </div>
 
     <div class="container mt-5">
