@@ -3,13 +3,15 @@ import { services } from "@tomtom-international/web-sdk-services";
 import SearchBox from "@tomtom-international/web-sdk-plugin-searchbox";
 import axios from "axios";
 
+import AppCard from "../components/apartments/AppCard.vue";
+
 export default {
   data() {
     return {
       apiKey: "k9U6D8g43D9rsDAaXC4vgkIc4Ko56P7d",
       lng: "",
       lat: "",
-      radius: "20",
+      radius: 20,
       rooms: 1,
       beds: 1,
       services: [],
@@ -31,6 +33,8 @@ export default {
     },
   },
 
+  components: { AppCard },
+
   methods: {
     geocoding() {
       let getAddress = document.getElementById("address").value;
@@ -41,7 +45,6 @@ export default {
           bestResult: true,
         })
         .then((res) => {
-          console.log(res);
           this.lng = res.position.lng;
           this.lat = res.position.lat;
 
@@ -52,7 +55,9 @@ export default {
     getApartmentList() {
       axios
         .get(
-          `http://127.0.0.1:8000/api/search/${this.lat}/${this.lng}/${this.radius}/${this.rooms}/${this.beds}`
+          `http://127.0.0.1:8000/api/search/${this.lat}/${this.lng}/${this.radius}/${this.rooms}/${this.beds}`,
+          this.activeFilters,
+          console.log(this.activeFilters)
         )
         .then((res) => {
           this.apartmentsList = res.data;
@@ -68,6 +73,11 @@ export default {
           };
         });
       });
+    },
+
+    toggleService(service) {
+      service.active = !service.active;
+      this.getApartmentList();
     },
 
     autocompleteAddress() {
@@ -150,11 +160,37 @@ export default {
         @click.left="geocoding()"
       />
       <span>{{ this.radius }} km</span> <br />
+
+      <div class="col-3">
+        <h4>Select the services</h4>
+
+        <span
+          v-for="service in services"
+          :key="service.id"
+          :class="{
+            disabled: !service.active,
+          }"
+          @click="toggleService(service)"
+          class="badge mx-1 clickable service"
+        >
+          {{ service.name }}
+        </span>
+      </div>
       <button class="btn btn-primary mt-3" @click="geocoding()">Search</button>
     </div>
 
-    <h2 class="text-center">Results:</h2>
-    <p v-for="(apartment, index) in apartmentsList">{{ apartment.name }}</p>
+    <!-- <h2 class="text-center">Results:</h2>
+    <p v-for="(apartment, index) in apartmentsList">{{ apartment.name }}</p> -->
+    <div class="col-9">
+      <div class="row row-cols-2 g-3">
+        <AppCard
+          v-for="(apartment, index) in apartmentsList"
+          :key="apartment.id"
+          :apartment="apartment"
+          :isDetail="false"
+        />
+      </div>
+    </div>
   </div>
 </template>
 
@@ -166,5 +202,17 @@ export default {
   min-height: 500px;
 
   background-color: lightgrey;
+}
+
+.disabled {
+  background-color: #555 !important;
+}
+
+.clickable {
+  cursor: pointer;
+}
+
+.service {
+  background-color: rgb(114, 114, 189);
 }
 </style>
