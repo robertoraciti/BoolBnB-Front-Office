@@ -80,6 +80,7 @@ export default {
 <style lang="scss" scoped>
 footer {
   margin: auto;
+  margin-top: 100px !important;
 }
 
 a:hover,

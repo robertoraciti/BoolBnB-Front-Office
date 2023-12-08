@@ -90,7 +90,7 @@ export default {
     </div>
 
     <div class="d-flex justify-content-center align-items-center">
-      <div class="w-50 mx-4"><div id="address_search"></div></div>
+      <div class="w-50 mx-4 searchb"><div id="address_search"></div></div>
       <!-- searchbar type hidden -->
       <input
         type="hidden"
@@ -142,5 +142,9 @@ export default {
 .button:hover {
   background-color: rgba(0, 0, 0, 0.615);
   color: #a3c422;
+}
+
+.searchb {
+  width: 35% !important;
 }
 </style>
