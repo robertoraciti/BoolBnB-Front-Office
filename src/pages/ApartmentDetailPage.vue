@@ -112,9 +112,36 @@ export default {
 
   <div class="row container m-auto my-4">
     <!-- blocco foto camera -->
-    <div class="col-6">
-      <h1>prova</h1>
-      <img src="" alt="" />
+    <div class="col-6 mt-4">
+      <h2 class="ms-3">see more...</h2>
+
+      <div class="d-flex justify-content-between mt-3">
+        <div class="col-8 p-3">
+          <img src="../components/img/roompic1.webp" alt="" />
+          <div class="mt-4">
+            <p>
+              Welcome to boolbnb apartment, it is our concern to provide, within
+              each of our apartments, a welcome gift consisting of a basket
+              equipped with all household supplies like hairdryer and hygiene
+              products such as shampoo , balm body cream and bubble bath, as a
+              welcome gift. <br />
+            </p>
+            <p>Your pleasure, is our pleasure.</p>
+          </div>
+        </div>
+
+        <div class="col-4">
+          <div class="p-3">
+            <img src="../components/img/roompic4.webp" alt="" />
+          </div>
+          <div class="p-3">
+            <img src="../components/img/roompic2.webp" alt="" />
+          </div>
+          <div class="p-3">
+            <img src="../components/img/roompic3.webp" alt="" />
+          </div>
+        </div>
+      </div>
     </div>
 
     <!-- blocco mappa -->
