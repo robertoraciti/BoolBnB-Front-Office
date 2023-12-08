@@ -8,13 +8,15 @@ export default {
 
 <template>
   <footer>
-    <div class="container-fluid border border-primary">
-      <ul class="nav justify-content-center">
-        <li class="nav-item">
-          <a class="navbar-brand" href="/"
-            ><img src="../img/BoolBnB-logo.png"
-          /></a>
-        </li>
+    <div class="container-fluid mt-5 pt-5">
+      <!-- logo -->
+      <div class="logo text-center">
+        <a class="navbar-brand" href="/"
+          ><img src="../img/BoolBnB-logo.png"
+        /></a>
+      </div>
+      <!-- links -->
+      <ul class="nav justify-content-center my-4">
         <li class="nav-item">
           <router-link
             class="nav-link"
@@ -55,19 +57,23 @@ export default {
             >Register</a
           >
         </li>
-        <li class="nav-item">
-          <font-awesome-icon
-            :icon="['fab', 'facebook']"
-            class="mx-2 nav-link" />
-        </li>
-        <li class="nav-item">
-          <font-awesome-icon
-            :icon="['fab', 'instagram']"
-            class="mx-2 nav-link" />
-        </li>
       </ul>
     </div>
-    <div class="container footer-pic mt-5"></div>
+    <!-- footer - social -->
+    <div class="text-center">
+      <p>Follow us</p>
+      <div class="d-flex justify-content-center">
+        <font-awesome-icon
+          :icon="['fab', 'instagram']"
+          class="mx-2 nav-link ico fs-4"
+        />
+        <font-awesome-icon
+          :icon="['fab', 'facebook']"
+          class="mx-2 nav-link ico fs-4"
+        />
+      </div>
+    </div>
+    <div class="container footer-pic mt-3"></div>
   </footer>
 </template>
 
@@ -78,11 +84,25 @@ footer {
 
 a:hover,
 router-link:hover {
-  text-decoration: underline;
+  font-weight: 600;
+  color: #a3c422;
 }
 
 .footer-pic {
-  background: url("../img/footer-art.svg") no-repeat;
+  background: url("../img/footer.png") no-repeat;
   height: 160px;
+}
+
+ul a {
+  border-bottom: 1px solid #a3c422;
+  color: black;
+}
+
+.ico {
+  cursor: pointer;
+
+  &:hover {
+    color: #a3c422 !important;
+  }
 }
 </style>
