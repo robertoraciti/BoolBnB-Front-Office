@@ -37,33 +37,43 @@ export default {
 </script>
 
 <template>
+  <!-- buttons -->
   <div class="container d-flex justify-content-between msmargin">
     <RouterLink
-      class="btn btn-primary ms-3"
+      class="button-2"
       :to="{
         name: 'home',
       }"
       >Go Back</RouterLink
     >
-    <button
+    <!-- <button
       type="button"
       class="btn btn-success"
       data-bs-toggle="modal"
-      :data-bs-target="'#messageModal-' + apartment.id">
+      :data-bs-target="'#messageModal-' + apartment.id"
+    >
       Send message
-    </button>
+    </button> -->
   </div>
-  <div
-    class="container w-75 mt-5 d-flex justify-content-around col-sm-12 col-md-4">
-    <div class="row col-sm-1 col-md-2 w-100 d-flex flex-column flex-md-row">
-      <div class="col no-p me-4">
-        <img :src="apartment.cover_image" alt="" class="" />
-      </div>
 
-      <div class="col border no-p border-primary">
-        <div class="main-info">
-          <h2>{{ apartment.name }}</h2>
-          <h5>{{ apartment.address }}</h5>
+  <!-- pic - detail -->
+
+  <div
+    class="container w-100 mt-5 d-flex justify-content-around col-sm-12 col-md-4"
+  >
+    <div class="row col-sm-1 col-md-2 w-100 d-flex flex-column flex-md-row">
+      <div class="col p-1 me-4 frame">
+        <div class="frame">
+          <div class="p-1">
+            <img :src="apartment.cover_image" alt="" class="" />
+          </div>
+        </div>
+      </div>
+      <!-- card info -->
+      <div class="col card-frame p-0">
+        <div class="main-info text-center">
+          <h2 class="under-green d-inline">{{ apartment.name }}</h2>
+          <h5 class="mt-2">{{ apartment.address }}</h5>
         </div>
 
         <div class="p-2">
@@ -97,9 +107,58 @@ export default {
           </div>
         </div>
       </div>
-      <div class="col">
-        <tomMap :apartment="apartment" />
+    </div>
+  </div>
+
+  <div class="row container m-auto my-4">
+    <!-- blocco foto camera -->
+    <div class="col-6 mt-4">
+      <h2 class="ms-3">see more...</h2>
+
+      <div class="d-flex justify-content-between mt-3">
+        <div class="col-8 p-3">
+          <img src="../components/img/roompic1.webp" alt="" />
+          <div class="mt-4">
+            <p>
+              Welcome to boolbnb apartment, it is our concern to provide, within
+              each of our apartments, a welcome gift consisting of a basket
+              equipped with all household supplies like hairdryer and hygiene
+              products such as shampoo , balm body cream and bubble bath, as a
+              welcome gift. <br />
+            </p>
+            <p>Your pleasure, is our pleasure.</p>
+          </div>
+        </div>
+
+        <div class="col-4">
+          <div class="p-3">
+            <img src="../components/img/roompic4.webp" alt="" />
+          </div>
+          <div class="p-3">
+            <img src="../components/img/roompic2.webp" alt="" />
+          </div>
+          <div class="p-3">
+            <img src="../components/img/roompic3.webp" alt="" />
+          </div>
+        </div>
       </div>
+    </div>
+
+    <!-- blocco mappa -->
+    <div class="col-6">
+      <div class="d-flex justify-content-between my-4">
+        <h2>Contact host</h2>
+        <button
+          type="button"
+          class="button"
+          data-bs-toggle="modal"
+          :data-bs-target="'#messageModal-' + apartment.id"
+        >
+          Send message
+        </button>
+      </div>
+
+      <tomMap :apartment="apartment" />
     </div>
   </div>
 
@@ -124,8 +183,8 @@ export default {
   padding: 0;
 }
 .main-info {
-  color: white;
-  background-color: royalblue;
+  color: black;
+  background-color: #dcd2c3;
 }
 div {
   img {
@@ -136,5 +195,55 @@ div {
 }
 ul {
   list-style: none;
+}
+
+.button {
+  background-color: #a3c422;
+  border: 1px solid black;
+  padding: 5px 35px;
+  border-radius: 20px;
+  font-weight: 400;
+}
+
+.button:hover {
+  background-color: rgba(0, 0, 0, 0.615);
+  color: #a3c422;
+}
+
+.button-2 {
+  background-color: #dcd2c3;
+  border: 1px solid black;
+  padding: 5px 35px;
+  border-radius: 20px;
+  font-weight: 400;
+  color: black;
+  text-decoration: none;
+
+  &:hover {
+    // background-color: rgba(0, 0, 0, 0.332);
+    background-color: #a3c422;
+    color: black;
+  }
+}
+
+.frame {
+  border: 2px solid #dcd2c3;
+  border-radius: 15px;
+}
+
+.frame img {
+  border-radius: 15px;
+}
+
+.card-frame {
+  border: 2px solid #dcd2c3;
+  border-radius: 0 0 15px 15px;
+}
+
+.under-green {
+  border-bottom: 2px solid #a3c422;
+}
+.debug {
+  border: 1px solid red;
 }
 </style>

@@ -65,14 +65,14 @@ export default {
   </div>
   <div class="container">
     <nav aria-label="Page navigation example">
-      <ul class="pagination d-flex justify-content-center mt-5">
+      <ul class="pagination d-flex justify-content-center mt-3">
         <li
           v-for="link in pagination.links"
           @click="fetchProjects(link.url)"
           class="page-item"
           :class="link.active ? 'active' : ''"
         >
-          <a class="page-link" v-html="link.label"></a>
+          <a class="page-link text-black" v-html="link.label"></a>
         </li>
       </ul>
     </nav>
@@ -88,10 +88,11 @@ export default {
 }
 
 .page-item {
-  border: 1px solid red;
+  border: none;
 }
 
-.active {
-  background-color: red !important;
+.pagination {
+  --bs-pagination-active-bg: #a3c422;
+  --bs-pagination-active-border-color: #a3c422;
 }
 </style>

@@ -70,6 +70,8 @@ p {
 .price {
   font-weight: 700;
   font-size: 18px;
+  padding-bottom: 2px;
+  border-bottom: 1px solid #a3c422;
 }
 
 .ccard {
