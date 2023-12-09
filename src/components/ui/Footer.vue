@@ -33,14 +33,7 @@ export default {
             >Advanced Search</router-link
           >
         </li>
-        <li class="nav-item">
-          <router-link
-            class="nav-link"
-            aria-current="page"
-            :to="{ name: 'advanced-filter' }"
-            >Advanced filter</router-link
-          >
-        </li>
+
         <li class="nav-item">
           <a
             href="http://localhost:8000/login"
