@@ -1,6 +1,6 @@
 <script>
 import { services } from "@tomtom-international/web-sdk-services";
-import SearchBox from "@tomtom-international/web-sdk-plugin-searchbox";
+import { store } from "../data/store.js";
 import axios from "axios";
 
 import AppCard from "../components/apartments/AppCard.vue";
@@ -9,10 +9,10 @@ export default {
   data() {
     return {
       apiKey: "k9U6D8g43D9rsDAaXC4vgkIc4Ko56P7d",
-      query: "",
+      query: store.coordinates.query,
       suggestions: [],
-      lng: "",
-      lat: "",
+      lng: store.coordinates.lng,
+      lat: store.coordinates.lat,
       radius: 20,
       rooms: 1,
       beds: 1,
@@ -102,6 +102,7 @@ export default {
 
   created() {
     this.fetchServices();
+    this.getApartmentList();
   },
 };
 </script>

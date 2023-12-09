@@ -1,5 +1,6 @@
 <script>
 import axios from "axios";
+import { store } from "../../data/store";
 
 export default {
   data() {
@@ -18,7 +19,7 @@ export default {
     getApartmentList() {
       axios
         .get(
-          `http://127.0.0.1:8000/api/search/${this.lat}/${this.lng}/${this.radius}`
+          `http://127.0.0.1:8000/api/search/${store.coordinates.lat}/${store.coordinates.lng}/${this.radius}`
         )
         .then((res) => {
           console.log(res);
@@ -48,12 +49,11 @@ export default {
       this.suggestions = []; // Clear suggestions after selecting one
 
       const { lat, lon } = suggestion.position;
-      this.lng = suggestion.position.lon;
-      this.lat = suggestion.position.lat;
+      store.coordinates.lng = suggestion.position.lon;
+      store.coordinates.lat = suggestion.position.lat;
+      store.coordinates.query = this.query;
       console.log("Latitude:", lat);
       console.log("Longitude:", lon);
-      let getAddress = document.getElementById("location");
-      console.log(getAddress);
     },
   },
 };
@@ -95,16 +95,16 @@ export default {
         name="address"
       />
       <div>
-        <button class="button mt-2" @click="getApartmentList">Search</button>
+        <!-- <button class="button mt-2" @click="getApartmentList">Search</button> -->
       </div>
-      <!-- <RouterLink
-        class="btn btn-warning"
+      <RouterLink
+        class="button mt-2"
         :to="{
           name: 'advanced-search',
         }"
       >
         Filtered Search
-      </RouterLink> -->
+      </RouterLink>
     </div>
 
     <div class="container mt-5">
