@@ -109,7 +109,6 @@ export default {
         <!-- <button class="button mt-2" @click="getApartmentList">Search</button> -->
       </div>
       <RouterLink
-        v-if="user"
         class="button nav-link mt-2"
         :to="{
           name: 'advanced-search',
@@ -117,15 +116,6 @@ export default {
       >
         Filtered Search
       </RouterLink>
-      <button
-        v-if="!user"
-        type="button"
-        class="button nav-link"
-        data-bs-toggle="modal"
-        :data-bs-target="'#loginModal'"
-      >
-        Filtered Search
-      </button>
     </div>
 
     <div class="container mt-5">
