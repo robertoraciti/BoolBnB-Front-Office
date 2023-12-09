@@ -65,7 +65,7 @@ export default {
       <h1>Your dream house is just a click away...</h1>
     </div>
 
-    <div class="d-flex justify-content-center align-items-center">
+    <div class="d-flex justify-content-center">
       <div class="w-50 mx-4 searchb">
         <div class="input-location">
           <input
@@ -95,7 +95,10 @@ export default {
         name="address"
       />
       <div>
-        <button class="button mt-2" @click="getApartmentList">Search</button>
+        <!-- searchbar for adress -->
+        <button class="button ms-margin" @click="getApartmentList">
+          Search
+        </button>
       </div>
       <!-- <RouterLink
         class="btn btn-warning"
@@ -142,6 +145,8 @@ export default {
 
 .searchb {
   width: 35% !important;
+  overflow: auto;
+  max-height: 200px;
 }
 
 .input-location {
@@ -173,5 +178,9 @@ li {
 
 li:hover {
   background-color: #e0e0e0;
+}
+
+.ms-margin {
+  margin-top: 13px;
 }
 </style>
