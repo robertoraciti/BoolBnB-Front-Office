@@ -2,6 +2,7 @@ import { createApp } from "vue";
 import "./assets/scss/style.scss";
 import * as bootstrap from "bootstrap";
 import axios from "axios";
+import authService from "../src/auth.js";
 
 import { router } from "./router";
 
@@ -45,6 +46,24 @@ library.add(
   faMugHot,
   faInstagram,
   faFacebook
+);
+
+const axiosInstance = axios.create({
+  baseURL: "http://127.0.0.1:8000", // Sostituisci con l'URL del tuo backend Laravel
+});
+
+// Aggiungi un interceptor per gestire automaticamente il token nelle richieste
+axiosInstance.interceptors.request.use(
+  (config) => {
+    const token = authService.getToken();
+    if (token) {
+      config.headers.Authorization = `Bearer ${token}`;
+    }
+    return config;
+  },
+  (error) => {
+    return Promise.reject(error);
+  }
 );
 
 const app = createApp(App);

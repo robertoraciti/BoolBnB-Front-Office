@@ -102,7 +102,7 @@ export default {
               class="btn btn-primary"
               data-bs-dismiss="modal"
             >
-              submit
+              Submit
             </button>
           </div>
         </form>
