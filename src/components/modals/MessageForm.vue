@@ -1,6 +1,7 @@
 <script>
 import axios from "axios";
 import { store } from "../../data/store.js";
+import authService from "../../auth.js";
 
 export default {
   data() {
@@ -9,12 +10,15 @@ export default {
         name: "",
         email: "",
         text: "",
+        read: false,
         apartment_id: this.apartment.id,
       },
+      user: null,
     };
   },
   props: {
     apartment: Object,
+    // user: Object,
   },
   methods: {
     async submit() {
@@ -28,6 +32,22 @@ export default {
           // this.$router.push({ name: "not-found" });
         });
     },
+
+    loadUserData() {
+      // Ottieni i dati dell'utente dal servizio di autenticazione
+      this.user = authService.getUser();
+    },
+
+    newUser() {
+      if (this.user) {
+        this.form.name = this.user.name;
+        this.form.email = this.user.email;
+      }
+    },
+  },
+  mounted() {
+    this.loadUserData();
+    this.newUser();
   },
 };
 </script>
