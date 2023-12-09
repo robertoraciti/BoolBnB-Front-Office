@@ -1,7 +1,45 @@
 <script>
+import loginForm from "../modals/LoginForm.vue";
+import authService from "../../auth.js";
+import axios from "axios";
 export default {
   data() {
-    return {};
+    return {
+      user: null,
+    };
+  },
+  components: { loginForm },
+  methods: {
+    async logout() {
+      const token = document.head.querySelector('meta[name="csrf-token"]');
+      if (token) {
+        axios.defaults.headers.common["X-CSRF-TOKEN"] = token.content;
+      }
+      try {
+        axios.post("http://127.0.0.1:8000/api/logout");
+        // Rimuovi il token e i dati utente dopo il logout
+        authService.removeToken();
+        authService.removeUser();
+        // Esegui altre azioni post-logout, se necessario
+        console.log(authService.getToken());
+        window.location.reload();
+      } catch (error) {
+        console.error("Errore durante il logout:", error);
+      }
+    },
+    loadUserData() {
+      // Ottieni i dati dell'utente dal servizio di autenticazione
+      this.user = authService.getUser();
+    },
+  },
+  computed: {
+    isAuthenticated() {
+      // Utilizza il modulo di autenticazione per verificare la presenza del token
+      return authService.getToken() !== null;
+    },
+  },
+  mounted() {
+    this.loadUserData();
   },
 };
 </script>
@@ -25,51 +63,26 @@ export default {
         class="collapse navbar-collapse justify-content-between"
         id="navbarNav"
       >
-        <div>
-          <!-- <ul class="navbar-nav">
-            <li class="nav-item">
-              <router-link
-                class="nav-link"
-                aria-current="page"
-                :to="{ name: 'home' }"
-                >Home</router-link
-              >
-            </li> -->
-          <!-- <li class="nav-item">
-            <router-link
-              class="nav-link"
-              aria-current="page"
-              :to="{ name: 'apartments' }"
-              >Apartments</router-link
-            >
-          </li> -->
-          <!-- <li class="nav-item">
-              <router-link
-                class="nav-link"
-                aria-current="page"
-                :to="{ name: 'advanced-search' }"
-                >Advanced Search</router-link
-              >
-            </li>
-            <li class="nav-item">
-              <router-link
-                class="nav-link"
-                aria-current="page"
-                :to="{ name: 'advanced-filter' }"
-                >Advanced filter</router-link
-              >
-            </li> -->
-          <!-- </ul> -->
+        <div></div>
+        <div v-if="user" class="d-flex align-items-center">
+          <a class="nav-link" href="http://localhost:8000/admin/apartments">
+            <h5 class="me-3">{{ user.name }}</h5>
+          </a>
+          <button v-if="isAuthenticated" class="btn btn-danger" @click="logout">
+            Logout
+          </button>
         </div>
-        <div>
+        <div v-else>
           <ul class="navbar-nav">
             <li class="nav-item">
-              <a
-                href="http://localhost:8000/login"
-                class="nav-link"
-                aria-current="page"
-                ><button type="button" class="button-1">Login</button>
-              </a>
+              <button
+                type="button"
+                class="button-1 nav-link"
+                data-bs-toggle="modal"
+                :data-bs-target="'#loginModal'"
+              >
+                Login
+              </button>
             </li>
             <li class="nav-item">
               <a
@@ -84,6 +97,7 @@ export default {
       </div>
     </div>
   </nav>
+  <loginForm></loginForm>
 </template>
 
 <style lang="scss" scoped>

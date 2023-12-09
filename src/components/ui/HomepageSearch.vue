@@ -1,5 +1,7 @@
 <script>
 import axios from "axios";
+import loginForm from "../modals/LoginForm.vue";
+import authService from "../../auth.js";
 import { store } from "../../data/store";
 
 export default {
@@ -7,6 +9,7 @@ export default {
     return {
       apiKey: "k9U6D8g43D9rsDAaXC4vgkIc4Ko56P7d",
       query: "",
+      user: null,
       suggestions: [],
       lng: "",
       lat: "",
@@ -14,6 +17,7 @@ export default {
       apartmentsList: [],
     };
   },
+  components: { loginForm },
 
   methods: {
     getApartmentList() {
@@ -55,6 +59,13 @@ export default {
       console.log("Latitude:", lat);
       console.log("Longitude:", lon);
     },
+    loadUserData() {
+      // Ottieni i dati dell'utente dal servizio di autenticazione
+      this.user = authService.getUser();
+    },
+  },
+  mounted() {
+    this.loadUserData();
   },
 };
 </script>
@@ -87,16 +98,13 @@ export default {
           </ul>
         </div>
       </div>
-      <!-- searchbar type hidden -->
       <input
         type="hidden"
         class="form-control w-25"
         id="address"
         name="address"
       />
-      <div>
-        <!-- <button class="button mt-2" @click="getApartmentList">Search</button> -->
-      </div>
+      <div></div>
       <RouterLink
         class="button ms-margin"
         :to="{
@@ -111,6 +119,7 @@ export default {
       <p v-for="(apartment, index) in apartmentsList">{{ apartment.name }}</p>
     </div>
   </div>
+  <loginForm></loginForm>
 </template>
 
 <style lang="scss" scoped>
