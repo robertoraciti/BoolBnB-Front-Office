@@ -17,20 +17,20 @@ export default {
       <div class="text-center pt-5"></div>
       <HomepageSearch></HomepageSearch>
     </div>
-    <div class="container-fluid p-5 text-center">
-      <h6>search for the perfection</h6>
-      <div class="pb-5">
-        <img src="../components/img/keyy.png" alt="" class="key me-4" />
-        <button type="button" class="button">
-          <router-link
-            class="nav-link"
-            aria-current="page"
-            :to="{ name: 'advanced-search' }"
-            >Advanced Research</router-link
-          >
-        </button>
-      </div>
+    <div class="container-fluid p-5 pb-0 text-center">
       <AppList></AppList>
+    </div>
+    <div class="pb-5 text-center">
+      <h6>search for the perfection</h6>
+      <img src="../components/img/keyy.png" alt="" class="key me-4" />
+      <button type="button" class="button">
+        <router-link
+          class="nav-link"
+          aria-current="page"
+          :to="{ name: 'advanced-search' }"
+          >Advanced Research</router-link
+        >
+      </button>
     </div>
   </div>
 </template>

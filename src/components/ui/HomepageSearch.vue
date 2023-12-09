@@ -76,7 +76,7 @@ export default {
       <h1>Your dream house is just a click away...</h1>
     </div>
 
-    <div class="d-flex justify-content-center align-items-center">
+    <div class="d-flex justify-content-center">
       <div class="w-50 mx-4 searchb">
         <div class="input-location">
           <input
@@ -106,7 +106,7 @@ export default {
       />
       <div></div>
       <RouterLink
-        class="button nav-link mt-2"
+        class="button ms-margin"
         :to="{
           name: 'advanced-search',
         }"
@@ -142,6 +142,8 @@ export default {
   padding: 5px 35px;
   border-radius: 20px;
   font-weight: 400;
+  text-decoration: none;
+  color: black;
 }
 
 .button:hover {
@@ -151,8 +153,18 @@ export default {
 
 .searchb {
   width: 35% !important;
+  // overflow: auto;
+  max-height: 200px;
+}
+.searchb ul {
+  overflow: auto;
+  max-height: 150px;
 }
 
+.searchb ul li {
+  border-radius: 20px;
+  text-align: start;
+}
 .input-location {
   text-align: center;
   margin-top: 10px;
@@ -182,5 +194,10 @@ li {
 
 li:hover {
   background-color: #e0e0e0;
+}
+
+.ms-margin {
+  margin-top: 13px;
+  max-height: 41px;
 }
 </style>
