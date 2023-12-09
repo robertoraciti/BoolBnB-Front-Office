@@ -1,5 +1,7 @@
 <script>
 import axios from "axios";
+import loginForm from "../modals/LoginForm.vue";
+import authService from "../../auth.js";
 import { store } from "../../data/store";
 
 export default {
@@ -7,6 +9,7 @@ export default {
     return {
       apiKey: "k9U6D8g43D9rsDAaXC4vgkIc4Ko56P7d",
       query: "",
+      user: null,
       suggestions: [],
       lng: "",
       lat: "",
@@ -14,6 +17,7 @@ export default {
       apartmentsList: [],
     };
   },
+  components: { loginForm },
 
   methods: {
     getApartmentList() {
@@ -55,6 +59,13 @@ export default {
       console.log("Latitude:", lat);
       console.log("Longitude:", lon);
     },
+    loadUserData() {
+      // Ottieni i dati dell'utente dal servizio di autenticazione
+      this.user = authService.getUser();
+    },
+  },
+  mounted() {
+    this.loadUserData();
   },
 };
 </script>
@@ -98,19 +109,30 @@ export default {
         <!-- <button class="button mt-2" @click="getApartmentList">Search</button> -->
       </div>
       <RouterLink
-        class="button mt-2"
+        v-if="user"
+        class="button nav-link mt-2"
         :to="{
           name: 'advanced-search',
         }"
       >
         Filtered Search
       </RouterLink>
+      <button
+        v-if="!user"
+        type="button"
+        class="button nav-link"
+        data-bs-toggle="modal"
+        :data-bs-target="'#loginModal'"
+      >
+        Filtered Search
+      </button>
     </div>
 
     <div class="container mt-5">
       <p v-for="(apartment, index) in apartmentsList">{{ apartment.name }}</p>
     </div>
   </div>
+  <loginForm></loginForm>
 </template>
 
 <style lang="scss" scoped>
