@@ -195,7 +195,7 @@ export default {
                 disabled: !service.active,
               }"
               @click="toggleService(service)"
-              class="badge mx-1 clickable service"
+              class="badge mx-1 my-1 clickable service"
             >
               {{ service.name }}
             </span>
@@ -247,7 +247,13 @@ export default {
 }
 
 .service {
-  background-color: rgb(114, 114, 189);
+  background-color: #a3c422;
+  border-radius: 15px;
+  font-size: 14px;
+}
+
+.mybadge {
+  border-radius: 10px;
 }
 
 .input-location {
