@@ -1,6 +1,4 @@
 <script>
-import { services } from "@tomtom-international/web-sdk-services";
-import SearchBox from "@tomtom-international/web-sdk-plugin-searchbox";
 import axios from "axios";
 
 export default {
@@ -17,23 +15,6 @@ export default {
   },
 
   methods: {
-    // geocoding() {
-    //   let getAddress = document.getElementById("address").value;
-    //   services
-    //     .geocode({
-    //       key: this.apiKey,
-    //       query: getAddress,
-    //       bestResult: true,
-    //     })
-    //     .then((res) => {
-    //       this.lng = res.position.lng;
-    //       this.lat = res.position.lat;
-    //       console.log(res.address.freeformAddress);
-    //       console.log(this.lat);
-    //       this.getApartmentList();
-    //     });
-    // },
-
     getApartmentList() {
       axios
         .get(
