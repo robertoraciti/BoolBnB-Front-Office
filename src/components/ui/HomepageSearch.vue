@@ -133,6 +133,8 @@ export default {
   padding: 5px 35px;
   border-radius: 20px;
   font-weight: 400;
+  text-decoration: none;
+  color: black;
 }
 
 .button:hover {
@@ -142,10 +144,18 @@ export default {
 
 .searchb {
   width: 35% !important;
-  overflow: auto;
+  // overflow: auto;
   max-height: 200px;
 }
+.searchb ul {
+  overflow: auto;
+  max-height: 150px;
+}
 
+.searchb ul li {
+  border-radius: 20px;
+  text-align: start;
+}
 .input-location {
   text-align: center;
   margin-top: 10px;

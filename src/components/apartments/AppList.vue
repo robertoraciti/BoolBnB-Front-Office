@@ -60,10 +60,7 @@ export default {
       </ul>
     </nav> -->
   </div>
-  <div class="row g-4">
-    <AppCard v-for="apartment in apartments" :apartment="apartment" />
-  </div>
-  <div class="container">
+  <div class="container pb-5">
     <nav aria-label="Page navigation example">
       <ul class="pagination d-flex justify-content-center mt-3">
         <li
@@ -76,6 +73,9 @@ export default {
         </li>
       </ul>
     </nav>
+  </div>
+  <div class="row g-4">
+    <AppCard v-for="apartment in apartments" :apartment="apartment" />
   </div>
 </template>
 <style lang="scss" scoped>
