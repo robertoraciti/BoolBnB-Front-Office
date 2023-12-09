@@ -98,16 +98,13 @@ export default {
           </ul>
         </div>
       </div>
-      <!-- searchbar type hidden -->
       <input
         type="hidden"
         class="form-control w-25"
         id="address"
         name="address"
       />
-      <div>
-        <!-- <button class="button mt-2" @click="getApartmentList">Search</button> -->
-      </div>
+      <div></div>
       <RouterLink
         class="button nav-link mt-2"
         :to="{
