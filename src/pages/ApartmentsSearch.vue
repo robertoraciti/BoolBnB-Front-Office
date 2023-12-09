@@ -9,11 +9,15 @@ export default {
   data() {
     return {
       apiKey: "k9U6D8g43D9rsDAaXC4vgkIc4Ko56P7d",
-      lng: this.$route.params.lng,
-      lat: this.$route.params.lat,
+      query: "",
+      suggestions: [],
+      lng: "",
+      lat: "",
       radius: 20,
       rooms: 1,
       beds: 1,
+      roomOptions: [1, 2, 3, 4, 5, 6, 7, 8],
+      bedOptions: [1, 2, 3, 4, 5, 6, 7, 8],
       services: [],
       apartmentsList: [],
     };
@@ -36,22 +40,7 @@ export default {
   components: { AppCard },
 
   methods: {
-    geocoding() {
-      let getAddress = document.getElementById("address").value;
-      services
-        .geocode({
-          key: this.apiKey,
-          query: getAddress,
-          bestResult: true,
-        })
-        .then((res) => {
-          this.lng = res.position.lng;
-          this.lat = res.position.lat;
-
-          this.getApartmentList();
-        });
-    },
-    // Chimata axios filter apartments
+    // Chiamata axios filter apartments
     getApartmentList() {
       axios
         .post(
@@ -80,38 +69,39 @@ export default {
       this.getApartmentList();
     },
 
-    autocompleteAddress() {
-      var options = {
-        searchOptions: {
-          key: "k9U6D8g43D9rsDAaXC4vgkIc4Ko56P7d",
-          language: "en-GB",
-          limit: 5,
-        },
-        autocompleteOptions: {
-          key: "k9U6D8g43D9rsDAaXC4vgkIc4Ko56P7d",
-          language: "en-GB",
-        },
-      };
-      var ttSearchBox = new SearchBox(services, options);
-      var searchBoxHTML = ttSearchBox.getSearchBoxHTML();
-      let address_search = document.getElementById("address_search");
-      address_search.append(searchBoxHTML);
+    async handleInput() {
+      if (this.query.length >= 3) {
+        try {
+          const response = await axios.get(
+            `https://api.tomtom.com/search/2/search/${encodeURIComponent(
+              this.query
+            )}.json?key=k9U6D8g43D9rsDAaXC4vgkIc4Ko56P7d`
+          );
+          this.suggestions = response.data.results;
+        } catch (error) {
+          console.error("Error fetching suggestions:", error);
+        }
+      } else {
+        this.suggestions = [];
+      }
+    },
+    handleSuggestionClick(suggestion) {
+      // Handle the click event on a suggestion
+      this.query = suggestion.address.freeformAddress;
+      this.suggestions = []; // Clear suggestions after selecting one
 
-      ttSearchBox.on("tomtom.searchbox.resultselected", function (data) {
-        console.log(data.data.result.address.freeformAddress);
-        let choiceAddress = document.getElementById("address");
-        choiceAddress.value = data.data.result.address.freeformAddress;
-      });
+      const { lat, lon } = suggestion.position;
+      this.lng = suggestion.position.lon;
+      this.lat = suggestion.position.lat;
+      console.log("Latitude:", lat);
+      console.log("Longitude:", lon);
+      let getAddress = document.getElementById("location");
+      console.log(getAddress);
     },
   },
 
   created() {
     this.fetchServices();
-  },
-
-  mounted() {
-    this.autocompleteAddress();
-    this.geocoding();
   },
 };
 </script>
@@ -124,29 +114,42 @@ export default {
   <div class="wrapper">
     <div class="container mt-5">
       <h2 class="text-center">Search:</h2>
-      <label for="address" class="form-label">Address</label>
-      <div id="address_search"></div>
-      <input type="hidden" class="form-control" id="address" name="address" />
-      <br />
-      <label for="rooms">rooms</label>
-      <input
-        type="number"
-        class="form-control"
-        name="rooms"
-        id="rooms"
-        min="1"
-        v-model="rooms"
-      /><br />
+      <div class="input-location">
+        <label for="location">Location:</label>
+        <input
+          type="text"
+          id="location"
+          v-model="query"
+          @input="handleInput"
+          placeholder="Enter location"
+        />
 
-      <label for="beds">beds</label>
-      <input
-        type="number"
-        class="form-control"
-        name="beds"
-        id="beds"
-        min="1"
-        v-model="beds"
-      />
+        <ul v-if="suggestions.length">
+          <li
+            v-for="(suggestion, index) in suggestions"
+            :key="index"
+            @click="handleSuggestionClick(suggestion)"
+          >
+            {{ suggestion.address.freeformAddress }}
+          </li>
+        </ul>
+      </div>
+      <br />
+      <div>
+        <label for="rooms">Rooms:</label>
+        <select id="rooms" v-model="rooms" class="custom-select">
+          <option v-for="option in roomOptions" :key="option" :value="option">
+            {{ option }}
+          </option>
+        </select>
+
+        <label for="beds">Beds:</label>
+        <select id="beds" v-model="beds" class="custom-select">
+          <option v-for="option in bedOptions" :key="option" :value="option">
+            {{ option }}
+          </option>
+        </select>
+      </div>
 
       <label for="radius" class="form-label">Radius</label>
       <input
@@ -157,7 +160,7 @@ export default {
         max="100"
         step="10"
         v-model="radius"
-        @click.left="geocoding()"
+        @click.left="getApartmentList"
       />
       <span>{{ this.radius }} km</span> <br />
 
@@ -176,7 +179,9 @@ export default {
           {{ service.name }}
         </span>
       </div>
-      <button class="btn btn-primary mt-3" @click="geocoding()">Search</button>
+      <button class="btn btn-primary mt-3" @click="getApartmentList">
+        Search
+      </button>
     </div>
 
     <!-- <h2 class="text-center">Results:</h2>
@@ -215,5 +220,45 @@ export default {
 
 .service {
   background-color: rgb(114, 114, 189);
+}
+
+.input-location {
+  max-width: 400px;
+  margin: 20px auto;
+  text-align: center;
+}
+
+/* Input styling */
+input {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+}
+
+/* Suggestions list styling */
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  cursor: pointer;
+  padding: 8px;
+  border: 1px solid #ccc;
+  background-color: #f9f9f9;
+  margin-bottom: 5px;
+  transition: background-color 0.3s ease;
+}
+
+li:hover {
+  background-color: #e0e0e0;
+}
+
+custom-select {
+  padding: 8px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-bottom: 10px;
 }
 </style>
