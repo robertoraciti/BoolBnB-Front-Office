@@ -35,20 +35,7 @@ export default {
         </li>
 
         <li class="nav-item">
-          <a
-            href="http://localhost:8000/login"
-            class="nav-link"
-            aria-current="page"
-            >Login</a
-          >
-        </li>
-        <li class="nav-item">
-          <a
-            href="http://localhost:8000/register"
-            class="nav-link"
-            aria-current="page"
-            >Register</a
-          >
+          <a href="#" class="nav-link" aria-current="page">Help Center</a>
         </li>
       </ul>
     </div>
@@ -62,6 +49,10 @@ export default {
         />
         <font-awesome-icon
           :icon="['fab', 'facebook']"
+          class="mx-2 nav-link ico fs-4"
+        />
+        <font-awesome-icon
+          icon="fa-brands fa-twitter"
           class="mx-2 nav-link ico fs-4"
         />
       </div>

@@ -111,7 +111,11 @@ export default {
           name: 'advanced-search',
         }"
       >
-        Filtered Search
+        Search
+        <font-awesome-icon
+          icon="fa-solid fa-magnifying-glass"
+          class="ms-2 small"
+        />
       </RouterLink>
     </div>
 
@@ -196,6 +200,9 @@ li:hover {
   background-color: #e0e0e0;
 }
 
+.small {
+  font-size: 11px;
+}
 .ms-margin {
   margin-top: 13px;
   max-height: 41px;

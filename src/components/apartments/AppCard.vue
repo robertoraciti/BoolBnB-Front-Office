@@ -34,10 +34,10 @@ export default {
           }"
         >
           <img :src="apartment.cover_image" alt="" class="h-50 w-100 rounded" />
-          <h5>{{ apartment.address }}</h5>
+          <h5 class="mt-2">{{ apartment.name }}</h5>
           <!-- <p class="small">{{ apartment.address }}</p> -->
         </RouterLink>
-        <p>{{ apartment.description }}</p>
+        <p>{{ apartment.address }}</p>
         <div class="my-3">
           <div>
             <span class="price">{{ apartment.price }} €</span>

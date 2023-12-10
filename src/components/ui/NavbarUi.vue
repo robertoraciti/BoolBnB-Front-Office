@@ -47,7 +47,11 @@ export default {
 <template>
   <nav class="navbar navbar-expand-lg fixed-top text-black">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#"><img src="../img/BoolBnB-logo.png" /></a>
+      <div class="logo text-center">
+        <a class="navbar-brand" href="/"
+          ><img src="../img/BoolBnB-logo.png"
+        /></a>
+      </div>
       <button
         class="navbar-toggler"
         type="button"
@@ -74,7 +78,7 @@ export default {
         </div>
         <div v-else>
           <ul class="navbar-nav">
-            <li class="nav-item">
+            <li class="nav-item mt-2">
               <button
                 type="button"
                 class="button-1 nav-link"

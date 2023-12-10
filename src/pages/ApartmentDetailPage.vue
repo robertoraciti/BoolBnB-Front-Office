@@ -96,7 +96,6 @@ export default {
           <h2 class="under-green d-inline">{{ apartment.name }}</h2>
           <h5 class="mt-2">{{ apartment.address }}</h5>
         </div>
-
         <div class="p-2">
           <p>{{ apartment.description }}</p>
         </div>
@@ -119,12 +118,17 @@ export default {
         <div class="container mt-5">
           <div class="row row-cols-2">
             <div v-for="service in apartment.services" class="col">
-              <font-awesome-icon :icon="'fa-solid fa-' + service.icon" />
+              <font-awesome-icon
+                :icon="'fa-solid fa-' + service.icon"
+                class="me-2"
+              />
               {{ service.name }}
             </div>
           </div>
-          <div>
-            <p class="fw-bold mt-5">{{ apartment.price }} € night</p>
+          <div class="price">
+            <p class="fw-bold fs-5 text-center under-green d-inline">
+              {{ apartment.price }} € night
+            </p>
           </div>
         </div>
       </div>
@@ -259,6 +263,10 @@ ul {
 .card-frame {
   border: 2px solid #dcd2c3;
   border-radius: 0 0 15px 15px;
+}
+.price {
+  margin-top: 35px;
+  margin-left: 225px;
 }
 
 .under-green {
