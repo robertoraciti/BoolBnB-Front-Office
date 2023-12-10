@@ -27,7 +27,7 @@ export default {
       }
       axios
         .post(
-          "http://127.0.0.1:8000/api/login",
+          "http://localhost:8000/api/login",
           {
             email: this.email,
             password: this.password,
@@ -36,6 +36,7 @@ export default {
             headers: {
               Authorization: "Bearer " + authService.getToken(),
             },
+            withCredentials: true,
           }
         )
         .then((response) => {
