@@ -68,8 +68,7 @@ export default {
     :id="'loginModal'"
     tabindex="-1"
     aria-labelledby="loginModal"
-    aria-hidden="true"
-  >
+    aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
@@ -78,31 +77,42 @@ export default {
             type="button"
             class="btn-close"
             data-bs-dismiss="modal"
-            aria-label="Close"
-          ></button>
+            aria-label="Close"></button>
         </div>
 
         <form @submit.prevent="login">
           <div class="modal-body">
-            <label>Email:</label>
-            <input v-model="email" type="email" required />
-            <label>Password:</label>
-            <input v-model="password" type="password" required />
+            <div class="row">
+              <div class="col-sm-12">
+                <label class="form-label">Email:</label>
+                <input
+                  class="form-control"
+                  v-model="email"
+                  type="email"
+                  required />
+              </div>
+              <div class="col-sm-12">
+                <label class="form-label">Password:</label>
+                <input
+                  class="form-control"
+                  v-model="password"
+                  type="password"
+                  required />
+              </div>
+            </div>
           </div>
           <div class="modal-footer">
             <button
               type="button"
               class="btn btn-secondary"
-              data-bs-dismiss="modal"
-            >
+              data-bs-dismiss="modal">
               Close
             </button>
             <a class="nav-link" href="/"></a>
             <button
               type="submit"
               class="btn btn-success"
-              data-bs-dismiss="modal"
-            >
+              data-bs-dismiss="modal">
               Login
             </button>
           </div>
