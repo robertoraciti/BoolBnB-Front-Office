@@ -110,18 +110,10 @@ export default {
             </div>
           </div>
           <div class="modal-footer">
-            <button
-              type="button"
-              class="btn btn-secondary"
-              data-bs-dismiss="modal"
-            >
+            <button type="button" class="button-2" data-bs-dismiss="modal">
               Close
             </button>
-            <button
-              type="submit"
-              class="btn btn-primary"
-              data-bs-dismiss="modal"
-            >
+            <button type="submit" class="button" data-bs-dismiss="modal">
               Submit
             </button>
           </div>
@@ -131,4 +123,33 @@ export default {
   </div>
 </template>
 
-<style lang="scss"></style>
+<style lang="scss" scoped>
+.button {
+  background-color: #a3c422;
+  border: 1px solid black;
+  padding: 5px 35px;
+  border-radius: 20px;
+  font-weight: 400;
+}
+
+.button:hover {
+  background-color: rgba(0, 0, 0, 0.615);
+  color: #a3c422;
+}
+
+.button-2 {
+  background-color: #dcd2c3;
+  border: 1px solid black;
+  padding: 5px 35px;
+  border-radius: 20px;
+  font-weight: 400;
+  color: black;
+  text-decoration: none;
+
+  &:hover {
+    // background-color: rgba(0, 0, 0, 0.332);
+    background-color: rgba(0, 0, 0, 0.673);
+    color: #a3c422;
+  }
+}
+</style>
