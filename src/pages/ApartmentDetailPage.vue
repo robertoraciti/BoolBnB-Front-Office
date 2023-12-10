@@ -21,17 +21,38 @@ export default {
   },
   components: { messageForm, tomMap },
 
+  methods: {
+    async incrementViews() {
+      const apartment = this.$route.params.id;
+      try {
+        await axios.post(
+          `http://127.0.0.1:8000/api/view/increment/${apartment}`
+        );
+        console.log(`http://127.0.0.1:8000/api/view/increment/${apartment}`);
+        console.log("Visualizzazioni incrementate con successo!");
+      } catch (error) {
+        console.error(
+          "Errore durante l'incremento delle visualizzazioni:",
+          error
+        );
+      }
+    },
+    fetchDetail() {
+      axios
+        .get(store.api.baseUrl + "apartments/" + this.$route.params.id)
+        .then((response) => {
+          this.apartment = response.data;
+          console.log(this.apartment);
+        })
+        .catch((error) => {
+          this.$router.push({ name: "not-found" });
+        });
+    },
+  },
+
   created() {
-    console.log(store.api.baseUrl + "apartments/" + this.$route.params.id);
-    axios
-      .get(store.api.baseUrl + "apartments/" + this.$route.params.id)
-      .then((response) => {
-        console.log(response.data);
-        this.apartment = response.data;
-      })
-      .catch((error) => {
-        this.$router.push({ name: "not-found" });
-      });
+    this.fetchDetail();
+    this.incrementViews();
   },
 };
 </script>
