@@ -84,8 +84,7 @@ export default {
             disabled: !service.active,
           }"
           @click="toggleService(service)"
-          class="badge mx-1 clickable service"
-        >
+          class="badge mx-1 clickable service">
           {{ service.name }}
         </span>
       </div>

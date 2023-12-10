@@ -110,8 +110,7 @@ export default {
 <template>
   <link
     rel="stylesheet"
-    href="../../node_modules/@tomtom-international/web-sdk-plugin-searchbox/dist/SearchBox.css"
-  />
+    href="../../node_modules/@tomtom-international/web-sdk-plugin-searchbox/dist/SearchBox.css" />
 
   <div class="wrapper p-2">
     <div class="frame">
@@ -120,27 +119,24 @@ export default {
           Research
           <font-awesome-icon
             icon="fa-solid fa-bars-staggered"
-            class="ms-2 fs-4 green"
-          />
+            class="ms-2 fs-4 green" />
         </h2>
-        <div class="d-flex">
-          <!-- location radius -->
-          <div class="input-location ms-0 col-10">
+
+        <div class="row d-flex">
+          <div class="col-sm-6 input-location">
             <label for="location">Location:</label>
             <input
               type="text"
               id="location"
               v-model="query"
               @input="handleInput"
-              placeholder="Enter location"
-            />
+              placeholder="Enter location" />
 
             <ul v-if="suggestions.length">
               <li
                 v-for="(suggestion, index) in suggestions"
                 :key="index"
-                @click="handleSuggestionClick(suggestion)"
-              >
+                @click="handleSuggestionClick(suggestion)">
                 {{ suggestion.address.freeformAddress }}
               </li>
             </ul>
@@ -156,56 +152,48 @@ export default {
                 max="100"
                 step="10"
                 v-model="radius"
-                @click.left="getApartmentList"
-              />
-              <span>{{ this.radius }} km</span> <br />
+                @click.left="getApartmentList" />
+              <span>{{ this.radius }} km</span>
             </div>
           </div>
+          <div class="col-sm-6 text-center">
+            <!-- rooms -->
 
-          <!-- rooms bed -->
-          <div class="col-5">
-            <div class="d-flex justify-content-evenly pt-3">
-              <div>
-                <label for="rooms" class="me-4"
-                  ><font-awesome-icon
-                    icon="fa-solid fa-door-open"
-                    class="me-2"
-                  />Rooms:</label
-                >
-                <select id="rooms" v-model="rooms" class="custom-select">
-                  <option
-                    v-for="option in roomOptions"
-                    :key="option"
-                    :value="option"
-                  >
-                    {{ option }}
-                  </option>
-                </select>
-              </div>
-              <div>
-                <label for="beds" class="me-4"
-                  ><font-awesome-icon
-                    icon="fa-solid fa-bed"
-                    class="me-2"
-                  />Beds:</label
-                >
-                <select id="beds" v-model="beds" class="custom-select">
-                  <option
-                    v-for="option in bedOptions"
-                    :key="option"
-                    :value="option"
-                  >
-                    {{ option }}
-                  </option>
-                </select>
-              </div>
+            <div class="mt-2">
+              <label for="rooms" class="me-4"
+                ><font-awesome-icon
+                  icon="fa-solid fa-door-open"
+                  class="me-2" />Rooms:</label
+              >
+              <select id="rooms" v-model="rooms" class="custom-select">
+                <option
+                  v-for="option in roomOptions"
+                  :key="option"
+                  :value="option">
+                  {{ option }}
+                </option>
+              </select>
             </div>
-
+            <!-- beds -->
+            <div class="mt-2">
+              <label for="beds" class="me-4"
+                ><font-awesome-icon
+                  icon="fa-solid fa-bed"
+                  class="me-2" />Beds:</label
+              >
+              <select id="beds" v-model="beds" class="custom-select">
+                <option
+                  v-for="option in bedOptions"
+                  :key="option"
+                  :value="option">
+                  {{ option }}
+                </option>
+              </select>
+            </div>
             <!-- services -->
-            <div class="pt-5 text-center">
-              <div class="pb-4">
-                <h4 class="underline d-inline">Select the services</h4>
-              </div>
+            <div class="mt-2">
+              <h4><u class="underline">Select the services</u></h4>
+
               <span
                 v-for="service in services"
                 :key="service.id"
@@ -213,22 +201,21 @@ export default {
                   disabled: !service.active,
                 }"
                 @click="toggleService(service)"
-                class="badge mx-1 my-1 clickable service"
-              >
+                class="badge mx-1 my-1 clickable service">
                 {{ service.name }}
               </span>
             </div>
           </div>
         </div>
-
-        <div class="text-center mt-4">
-          <button class="button mt-3" @click="getApartmentList">
-            Search
-            <font-awesome-icon
-              icon="fa-solid fa-magnifying-glass"
-              class="ms-2 small"
-            />
-          </button>
+        <div class="row">
+          <div class="text-center mt-4">
+            <button class="button" @click="getApartmentList">
+              Search
+              <font-awesome-icon
+                icon="fa-solid fa-magnifying-glass"
+                class="ms-2 small" />
+            </button>
+          </div>
         </div>
       </div>
 
@@ -240,8 +227,7 @@ export default {
             v-for="(apartment, index) in apartmentsList"
             :key="apartment.id"
             :apartment="apartment"
-            :isDetail="false"
-          />
+            :isDetail="false" />
         </div>
       </div>
     </div>
@@ -260,7 +246,7 @@ export default {
 
 .frame {
   border: 2px solid #f1ebeb;
-  min-height: 500px;
+  min-height: 700px;
   border-radius: 15px;
 }
 
@@ -354,5 +340,9 @@ label,
   font-weight: 600;
   border-bottom: 2px solid #a3c422;
   margin-bottom: 20px;
+}
+
+u {
+  text-decoration: none;
 }
 </style>
