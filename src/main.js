@@ -29,7 +29,12 @@ import { faSoap } from "@fortawesome/free-solid-svg-icons";
 import { faMugHot } from "@fortawesome/free-solid-svg-icons";
 import { faInstagram } from "@fortawesome/free-brands-svg-icons";
 import { faFacebook } from "@fortawesome/free-brands-svg-icons";
+import { faTwitter } from "@fortawesome/free-brands-svg-icons";
+
 import { faBed } from "@fortawesome/free-solid-svg-icons";
+import { faDoorOpen } from "@fortawesome/free-solid-svg-icons";
+import { faBarsStaggered } from "@fortawesome/free-solid-svg-icons";
+import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 
 / add icons to the library */;
 library.add(
@@ -47,7 +52,11 @@ library.add(
   faMugHot,
   faInstagram,
   faFacebook,
-  faBed
+  faBed,
+  faDoorOpen,
+  faBarsStaggered,
+  faMagnifyingGlass,
+  faTwitter
 );
 
 const axiosInstance = axios.create({

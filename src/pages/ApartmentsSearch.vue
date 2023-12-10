@@ -116,7 +116,13 @@ export default {
   <div class="wrapper p-2">
     <div class="frame">
       <div class="container">
-        <h2 class="text-center pt-5">Research</h2>
+        <h2 class="text-center pt-5">
+          Research
+          <font-awesome-icon
+            icon="fa-solid fa-bars-staggered"
+            class="ms-2 fs-4 green"
+          />
+        </h2>
         <div class="d-flex">
           <!-- location radius -->
           <div class="input-location ms-0 col-10">
@@ -160,7 +166,12 @@ export default {
           <div class="col-5">
             <div class="d-flex justify-content-evenly pt-3">
               <div>
-                <label for="rooms" class="me-4">Rooms:</label>
+                <label for="rooms" class="me-4"
+                  ><font-awesome-icon
+                    icon="fa-solid fa-door-open"
+                    class="me-2"
+                  />Rooms:</label
+                >
                 <select id="rooms" v-model="rooms" class="custom-select">
                   <option
                     v-for="option in roomOptions"
@@ -172,7 +183,12 @@ export default {
                 </select>
               </div>
               <div>
-                <label for="beds" class="me-4">Beds:</label>
+                <label for="beds" class="me-4"
+                  ><font-awesome-icon
+                    icon="fa-solid fa-bed"
+                    class="me-2"
+                  />Beds:</label
+                >
                 <select id="beds" v-model="beds" class="custom-select">
                   <option
                     v-for="option in bedOptions"
@@ -206,7 +222,13 @@ export default {
         </div>
 
         <div class="text-center mt-4">
-          <button class="button mt-3" @click="getApartmentList">Search</button>
+          <button class="button mt-3" @click="getApartmentList">
+            Search
+            <font-awesome-icon
+              icon="fa-solid fa-magnifying-glass"
+              class="ms-2 small"
+            />
+          </button>
         </div>
       </div>
 
@@ -240,6 +262,14 @@ export default {
   border: 2px solid #f1ebeb;
   min-height: 500px;
   border-radius: 15px;
+}
+
+.small {
+  font-size: 13px !important;
+}
+
+.green {
+  color: #a3c422;
 }
 .disabled {
   background-color: #555 !important;
