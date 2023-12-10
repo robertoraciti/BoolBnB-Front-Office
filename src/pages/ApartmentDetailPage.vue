@@ -125,8 +125,10 @@ export default {
               {{ service.name }}
             </div>
           </div>
-          <div>
-            <p class="fw-bold mt-5 fs-5">{{ apartment.price }} € night</p>
+          <div class="price">
+            <p class="fw-bold fs-5 text-center under-green d-inline">
+              {{ apartment.price }} € night
+            </p>
           </div>
         </div>
       </div>
@@ -261,6 +263,10 @@ ul {
 .card-frame {
   border: 2px solid #dcd2c3;
   border-radius: 0 0 15px 15px;
+}
+.price {
+  margin-top: 35px;
+  margin-left: 225px;
 }
 
 .under-green {
