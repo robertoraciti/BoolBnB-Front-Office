@@ -112,112 +112,115 @@ export default {
     rel="stylesheet"
     href="../../node_modules/@tomtom-international/web-sdk-plugin-searchbox/dist/SearchBox.css"
   />
-  <div class="wrapper">
-    <div class="container">
-      <h2 class="text-center pt-5">Filtered Search</h2>
-      <div class="d-flex">
-        <!-- location radius -->
-        <div class="input-location ms-0 col-10">
-          <label for="location">Location:</label>
-          <input
-            type="text"
-            id="location"
-            v-model="query"
-            @input="handleInput"
-            placeholder="Enter location"
-          />
 
-          <ul v-if="suggestions.length">
-            <li
-              v-for="(suggestion, index) in suggestions"
-              :key="index"
-              @click="handleSuggestionClick(suggestion)"
-            >
-              {{ suggestion.address.freeformAddress }}
-            </li>
-          </ul>
-
-          <!-- radius -->
-          <div class="w-75 m-auto p-3">
-            <label for="radius" class="form-label">Radius</label>
+  <div class="wrapper p-2">
+    <div class="frame">
+      <div class="container">
+        <h2 class="text-center pt-5">Research</h2>
+        <div class="d-flex">
+          <!-- location radius -->
+          <div class="input-location ms-0 col-10">
+            <label for="location">Location:</label>
             <input
-              type="range"
-              class="form-range"
-              id="radius"
-              min="20"
-              max="100"
-              step="10"
-              v-model="radius"
-              @click.left="getApartmentList"
+              type="text"
+              id="location"
+              v-model="query"
+              @input="handleInput"
+              placeholder="Enter location"
             />
-            <span>{{ this.radius }} km</span> <br />
+
+            <ul v-if="suggestions.length">
+              <li
+                v-for="(suggestion, index) in suggestions"
+                :key="index"
+                @click="handleSuggestionClick(suggestion)"
+              >
+                {{ suggestion.address.freeformAddress }}
+              </li>
+            </ul>
+
+            <!-- radius -->
+            <div class="w-75 m-auto p-3">
+              <label for="radius" class="form-label">Radius</label>
+              <input
+                type="range"
+                class="form-range"
+                id="radius"
+                min="20"
+                max="100"
+                step="10"
+                v-model="radius"
+                @click.left="getApartmentList"
+              />
+              <span>{{ this.radius }} km</span> <br />
+            </div>
+          </div>
+
+          <!-- rooms bed -->
+          <div class="col-5">
+            <div class="d-flex justify-content-evenly pt-3">
+              <div>
+                <label for="rooms" class="me-4">Rooms:</label>
+                <select id="rooms" v-model="rooms" class="custom-select">
+                  <option
+                    v-for="option in roomOptions"
+                    :key="option"
+                    :value="option"
+                  >
+                    {{ option }}
+                  </option>
+                </select>
+              </div>
+              <div>
+                <label for="beds" class="me-4">Beds:</label>
+                <select id="beds" v-model="beds" class="custom-select">
+                  <option
+                    v-for="option in bedOptions"
+                    :key="option"
+                    :value="option"
+                  >
+                    {{ option }}
+                  </option>
+                </select>
+              </div>
+            </div>
+
+            <!-- services -->
+            <div class="pt-5 text-center">
+              <div class="pb-4">
+                <h4 class="underline d-inline">Select the services</h4>
+              </div>
+              <span
+                v-for="service in services"
+                :key="service.id"
+                :class="{
+                  disabled: !service.active,
+                }"
+                @click="toggleService(service)"
+                class="badge mx-1 my-1 clickable service"
+              >
+                {{ service.name }}
+              </span>
+            </div>
           </div>
         </div>
 
-        <!-- rooms bed -->
-        <div class="col-5">
-          <div class="d-flex justify-content-evenly pt-3">
-            <div>
-              <label for="rooms" class="me-4">Rooms:</label>
-              <select id="rooms" v-model="rooms" class="custom-select">
-                <option
-                  v-for="option in roomOptions"
-                  :key="option"
-                  :value="option"
-                >
-                  {{ option }}
-                </option>
-              </select>
-            </div>
-            <div>
-              <label for="beds" class="me-4">Beds:</label>
-              <select id="beds" v-model="beds" class="custom-select">
-                <option
-                  v-for="option in bedOptions"
-                  :key="option"
-                  :value="option"
-                >
-                  {{ option }}
-                </option>
-              </select>
-            </div>
-          </div>
-
-          <!-- services -->
-          <div class="pt-5 text-center">
-            <div class="pb-4">
-              <h4 class="underline d-inline">Select the services</h4>
-            </div>
-            <span
-              v-for="service in services"
-              :key="service.id"
-              :class="{
-                disabled: !service.active,
-              }"
-              @click="toggleService(service)"
-              class="badge mx-1 my-1 clickable service"
-            >
-              {{ service.name }}
-            </span>
-          </div>
+        <div class="text-center mt-4">
+          <button class="button mt-3" @click="getApartmentList">Search</button>
         </div>
       </div>
 
-      <div class="text-center mt-4">
-        <button class="button mt-3" @click="getApartmentList">Search</button>
-      </div>
-    </div>
-
-    <!-- <h2 class="text-center">Results:</h2>
+      <!-- <h2 class="text-center">Results:</h2>
     <p v-for="(apartment, index) in apartmentsList">{{ apartment.name }}</p> -->
-    <div class="col-9">
-      <div class="row row-cols-2 g-3">
-        <AppCard
-          v-for="(apartment, index) in apartmentsList"
-          :key="apartment.id"
-          :apartment="apartment"
-          :isDetail="false"
-        />
+      <div class="col-9">
+        <div class="row g-4">
+          <AppCard
+            v-for="(apartment, index) in apartmentsList"
+            :key="apartment.id"
+            :apartment="apartment"
+            :isDetail="false"
+          />
+        </div>
       </div>
     </div>
   </div>
@@ -230,10 +233,14 @@ export default {
   border-radius: 15px;
   min-height: 500px;
   margin-top: 100px;
-
-  background-color: #ccc;
+  border: 2px solid #f1ebeb;
 }
 
+.frame {
+  border: 2px solid #f1ebeb;
+  min-height: 500px;
+  border-radius: 15px;
+}
 .disabled {
   background-color: #555 !important;
 }

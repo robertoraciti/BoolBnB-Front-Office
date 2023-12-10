@@ -75,6 +75,7 @@ export default {
     </nav>
   </div>
   <div class="row g-4">
+    <h2 class="text-start ms-3">Featured Apartments:</h2>
     <AppCard v-for="apartment in apartments" :apartment="apartment" />
   </div>
 </template>

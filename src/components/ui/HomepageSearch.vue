@@ -111,7 +111,7 @@ export default {
           name: 'advanced-search',
         }"
       >
-        Filtered Search
+        Search
       </RouterLink>
     </div>
 
