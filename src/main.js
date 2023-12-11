@@ -35,6 +35,7 @@ import { faBed } from "@fortawesome/free-solid-svg-icons";
 import { faDoorOpen } from "@fortawesome/free-solid-svg-icons";
 import { faBarsStaggered } from "@fortawesome/free-solid-svg-icons";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
+import { faUser } from "@fortawesome/free-solid-svg-icons";
 
 / add icons to the library */;
 library.add(
@@ -56,7 +57,8 @@ library.add(
   faDoorOpen,
   faBarsStaggered,
   faMagnifyingGlass,
-  faTwitter
+  faTwitter,
+  faUser
 );
 
 const axiosInstance = axios.create({

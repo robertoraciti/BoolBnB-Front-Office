@@ -18,6 +18,7 @@ export default {
       <HomepageSearch></HomepageSearch>
     </div>
     <div class="container-fluid p-5 pb-0 text-center">
+      <h2 class="text-start ms-3">Featured Apartments:</h2>
       <AppList></AppList>
     </div>
     <div class="pb-5 text-center">

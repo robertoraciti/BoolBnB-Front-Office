@@ -4,6 +4,7 @@ import { store } from "../data/store.js";
 import axios from "axios";
 
 import AppCard from "../components/apartments/AppCard.vue";
+import AppList from "../components/apartments/AppList.vue";
 
 export default {
   data() {
@@ -37,7 +38,7 @@ export default {
     },
   },
 
-  components: { AppCard },
+  components: { AppCard, AppList },
 
   methods: {
     // Chiamata axios filter apartments
@@ -110,7 +111,8 @@ export default {
 <template>
   <link
     rel="stylesheet"
-    href="../../node_modules/@tomtom-international/web-sdk-plugin-searchbox/dist/SearchBox.css" />
+    href="../../node_modules/@tomtom-international/web-sdk-plugin-searchbox/dist/SearchBox.css"
+  />
 
   <div class="wrapper p-2">
     <div class="frame">
@@ -119,7 +121,8 @@ export default {
           Research
           <font-awesome-icon
             icon="fa-solid fa-bars-staggered"
-            class="ms-2 fs-4 green" />
+            class="ms-2 fs-4 green"
+          />
         </h2>
 
         <div class="row d-flex">
@@ -130,13 +133,15 @@ export default {
               id="location"
               v-model="query"
               @input="handleInput"
-              placeholder="Enter location" />
+              placeholder="Enter location"
+            />
 
             <ul v-if="suggestions.length">
               <li
                 v-for="(suggestion, index) in suggestions"
                 :key="index"
-                @click="handleSuggestionClick(suggestion)">
+                @click="handleSuggestionClick(suggestion)"
+              >
                 {{ suggestion.address.freeformAddress }}
               </li>
             </ul>
@@ -152,7 +157,8 @@ export default {
                 max="100"
                 step="10"
                 v-model="radius"
-                @click.left="getApartmentList" />
+                @click.left="getApartmentList"
+              />
               <span>{{ this.radius }} km</span>
             </div>
           </div>
@@ -163,13 +169,15 @@ export default {
               <label for="rooms" class="me-4"
                 ><font-awesome-icon
                   icon="fa-solid fa-door-open"
-                  class="me-2" />Rooms:</label
+                  class="me-2"
+                />Rooms:</label
               >
               <select id="rooms" v-model="rooms" class="custom-select">
                 <option
                   v-for="option in roomOptions"
                   :key="option"
-                  :value="option">
+                  :value="option"
+                >
                   {{ option }}
                 </option>
               </select>
@@ -179,13 +187,15 @@ export default {
               <label for="beds" class="me-4"
                 ><font-awesome-icon
                   icon="fa-solid fa-bed"
-                  class="me-2" />Beds:</label
+                  class="me-2"
+                />Beds:</label
               >
               <select id="beds" v-model="beds" class="custom-select">
                 <option
                   v-for="option in bedOptions"
                   :key="option"
-                  :value="option">
+                  :value="option"
+                >
                   {{ option }}
                 </option>
               </select>
@@ -201,7 +211,8 @@ export default {
                   disabled: !service.active,
                 }"
                 @click="toggleService(service)"
-                class="badge mx-1 my-1 clickable service">
+                class="badge mx-1 my-1 clickable service"
+              >
                 {{ service.name }}
               </span>
             </div>
@@ -213,7 +224,8 @@ export default {
               Search
               <font-awesome-icon
                 icon="fa-solid fa-magnifying-glass"
-                class="ms-2 small" />
+                class="ms-2 small"
+              />
             </button>
           </div>
         </div>
@@ -224,10 +236,11 @@ export default {
       <div class="col-9">
         <div class="row g-4">
           <AppCard
-            v-for="(apartment, index) in apartmentsList"
+            v-for="apartment in apartmentsList"
             :key="apartment.id"
             :apartment="apartment"
-            :isDetail="false" />
+            :isDetail="false"
+          />
         </div>
       </div>
     </div>
@@ -296,6 +309,8 @@ input {
 ul {
   list-style-type: none;
   padding: 0;
+  overflow: auto;
+  max-height: 150px;
 }
 
 li {
@@ -305,6 +320,8 @@ li {
   background-color: #f9f9f9;
   margin-bottom: 5px;
   transition: background-color 0.3s ease;
+  border-radius: 20px;
+  text-align: start;
 }
 
 li:hover {

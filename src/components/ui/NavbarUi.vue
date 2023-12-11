@@ -70,7 +70,9 @@ export default {
         <div></div>
         <div v-if="user" class="d-flex align-items-center">
           <a class="nav-link" href="http://localhost:8000/admin/apartments">
-            <h5 class="me-3">{{ user.name }}</h5>
+            <h5 class="me-3">
+              <font-awesome-icon icon="fa-solid fa-user" class="mt-2" />
+            </h5>
           </a>
           <button v-if="isAuthenticated" class="btn btn-danger" @click="logout">
             Logout

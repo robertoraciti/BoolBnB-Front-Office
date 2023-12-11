@@ -16,7 +16,7 @@ export default {
 </script>
 
 <template>
-  <div class="col-12 col-sm-6 col-md-2 my-0">
+  <div class="col-sm-6 col-md-2 total-card">
     <div class="card h-100 border-0">
       <div class="card-body ccard">
         <RouterLink
@@ -62,6 +62,11 @@ p {
   max-width: 300px;
 }
 
+.total-card {
+  width: 300px;
+  margin-top: 80px;
+}
+
 .card-body a {
   text-decoration: none;
   color: black;
@@ -75,7 +80,7 @@ p {
 }
 
 .ccard {
-  height: 450px;
+  height: 550px;
 }
 
 .debug {
