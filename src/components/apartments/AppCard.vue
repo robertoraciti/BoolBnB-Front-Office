@@ -71,7 +71,6 @@ p {
 
 .total-card {
   width: 300px;
-  margin-top: 80px;
 }
 
 .card-body a {

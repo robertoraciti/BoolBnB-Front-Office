@@ -233,7 +233,7 @@ export default {
 
       <!-- <h2 class="text-center">Results:</h2>
     <p v-for="(apartment, index) in apartmentsList">{{ apartment.name }}</p> -->
-      <div class="col-9">
+      <div class="col-12">
         <div class="row g-4">
           <AppCard
             v-for="apartment in apartmentsList"
@@ -344,6 +344,7 @@ custom-select {
   font-weight: 400;
   text-decoration: none;
   color: black;
+  margin-bottom: 70px;
 }
 
 .button:hover {
