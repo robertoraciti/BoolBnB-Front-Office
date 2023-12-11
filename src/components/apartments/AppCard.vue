@@ -17,7 +17,7 @@ export default {
 
 <template>
   <div class="col-sm-6 col-md-2 total-card">
-    <div class="card h-100 border-0">
+    <div class="card h-100 border-0" style="position: relative">
       <div class="card-body ccard">
         <RouterLink
           class=""
@@ -43,6 +43,13 @@ export default {
             <span class="price">{{ apartment.price }} €</span>
             / Night
           </div>
+        </div>
+        <div
+          v-if="apartment.visibility === 1"
+          class="text-warning h5"
+          style="position: absolute; top: 20px; right: 30px"
+        >
+          <font-awesome-icon icon="fa-solid fa-star" class="mt-2" />
         </div>
       </div>
     </div>
